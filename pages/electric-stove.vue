@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт электрических плит" img="electric-stove" />
+	</div>
 </template>
 
 <script lang="ts" setup>

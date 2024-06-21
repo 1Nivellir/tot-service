@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт кондиционеров" img="conditioner" />
+	</div>
 </template>
 
 <script lang="ts" setup>

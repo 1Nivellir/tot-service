@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт водонагревателей" img="water-heater" />
+	</div>
 </template>
 
 <script lang="ts" setup>

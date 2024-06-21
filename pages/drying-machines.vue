@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт сушильных машин" img="drying-machines" />
+	</div>
 </template>
 
 <script lang="ts" setup>

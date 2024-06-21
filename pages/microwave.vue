@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт СВЧ печей" img="microwave" />
+	</div>
 </template>
 
 <script lang="ts" setup>

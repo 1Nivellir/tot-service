@@ -1,5 +1,7 @@
 <template>
-	<NuxtImg src="/logo.png" class="logo" alt="logo" densities="x1 x2" />
+	<NuxtLink to="/" class="logo">
+		<NuxtImg src="/logo.png" class="logo" alt="logo" densities="x1 x2" />
+	</NuxtLink>
 </template>
 
 <script lang="ts" setup></script>
@@ -8,6 +10,7 @@
 .logo {
 	width: 80px;
 	height: 80px;
+	text-decoration: none;
 
 	@media screen and (width > 640px) {
 		width: 100px;

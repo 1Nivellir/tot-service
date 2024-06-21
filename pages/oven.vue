@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт духовых шкафов" img="oven" />
+	</div>
 </template>
 
 <script lang="ts" setup>

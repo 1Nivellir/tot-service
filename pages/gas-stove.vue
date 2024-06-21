@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт газовых плит" img="gas-stove" />
+	</div>
 </template>
 
 <script lang="ts" setup>
