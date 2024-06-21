@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+		<CommonHero title="Ремонт варочных панелей" img="hob" />
+	</div>
 </template>
 
 <script lang="ts" setup>

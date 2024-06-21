@@ -1,5 +1,9 @@
 <template>
-	<div></div>
+	<div>
+		<ClientOnly>
+			<HomeHero />
+		</ClientOnly>
+	</div>
 </template>
 
 <script lang="ts" setup>
