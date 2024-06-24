@@ -9,7 +9,7 @@ body {
 	max-width: 1300px;
 	padding: 0 50px;
 
-	@media screen and (max-width: 960px) {
+	@media screen and (max-width: 975px) {
 		padding: 0 10px;
 	}
 }
@@ -42,6 +42,9 @@ body {
 	@media screen and (max-width > 640px) {
 		font-size: 42px;
 	}
+}
+img {
+	display: block;
 }
 .fade-enter-active,
 .fade-leave-active {

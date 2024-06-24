@@ -15,11 +15,7 @@
 			</p>
 			<ul class="advantages__list">
 				<li class="advantages__item">
-					<NuxtImg
-						src="/svg/adva-1.svg"
-						width="36px"
-						class="advantages__icon"
-					/>
+					<img src="/svg/adva-1.svg" width="36px" class="advantages__icon" />
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Нашим мастерам не знакомо слово НЕТ
@@ -31,11 +27,7 @@
 					</div>
 				</li>
 				<li class="advantages__item">
-					<NuxtImg
-						src="/svg/adva-2.svg"
-						width="36px"
-						class="advantages__icon"
-					/>
+					<img src="/svg/adva-2.svg" width="36px" class="advantages__icon" />
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Индивидуальный подход к каждому бренду.
@@ -47,11 +39,7 @@
 					</div>
 				</li>
 				<li class="advantages__item">
-					<NuxtImg
-						src="/svg/adva-3.svg"
-						width="36px"
-						class="advantages__icon"
-					/>
+					<img src="/svg/adva-3.svg" width="36px" class="advantages__icon" />
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Абсолютно всё — от диагностики до быстрого и качественного ремонта
@@ -68,12 +56,12 @@
 				</li>
 			</ul>
 			<div class="advantages__wrapper">
-				<NuxtImg
+				<img
 					src="/img/hero-circle.png"
 					class="advantages__img-bottom"
 					alt="Круг"
 				/>
-				<NuxtImg
+				<img
 					src="/img/adva-master.png"
 					class="advantages__img-2"
 					alt="Мастер"

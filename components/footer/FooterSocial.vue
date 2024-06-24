@@ -2,17 +2,17 @@
 	<ul class="footer__social">
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<NuxtImg class="footer__icon" src="/svg/insta.svg"></NuxtImg>
+				<img class="footer__icon" src="/svg/insta.svg"></img>
 			</a>
 		</li>
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<NuxtImg class="footer__icon" src="/svg/facebook.svg"></NuxtImg>
+				<img class="footer__icon" src="/svg/facebook.svg"></img>
 			</a>
 		</li>
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<NuxtImg class="footer__icon" src="/svg/vk.svg"></NuxtImg>
+				<img class="footer__icon" src="/svg/vk.svg"></img>
 			</a>
 		</li>
 	</ul>

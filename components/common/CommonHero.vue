@@ -9,8 +9,8 @@
 				<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
 			</ul>
 			<div class="hero__wrapper-img">
-				<NuxtImg src="/img/hero-circle.png" class="hero__img" alt="hero" />
-				<NuxtImg :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
+				<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
+				<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
 			</div>
 		</div>
 	</section>
