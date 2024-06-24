@@ -10,10 +10,13 @@
 
 <style scoped lang="scss">
 .header__descr {
-	max-width: 60%;
+	max-width: 256px;
 	color: var(--c-secondary);
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 130%;
+}
+.header__info {
+	margin-right: auto;
 }
 </style>

@@ -1,41 +1,37 @@
 <template>
 	<section class="hero">
 		<div class="container hero__container">
-			<Swiper :slides-per-view="1" @swiper="initSwiper">
-				<SwiperSlide>
-					<h1 class="hero__title">Ремонт стиральных машин в Москве и МО!</h1>
-					<ul class="hero__list">
-						<li class="hero__item">Бесплатный выезд и диагностика</li>
-						<li class="hero__item">Возможен срочный ремонт</li>
-						<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
-						<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
-					</ul>
-					<button class="btn-reset hero__btn">Оставить заявку</button>
+			<Swiper :slides-per-view="1" @swiper="initSwiper" space-between="30px">
+				<SwiperSlide class="hero__wrapper">
+					<div class="hero__wrapper-slide">
+						<h1 class="hero__title">Ремонт стиральных машин в Москве и МО!</h1>
+						<ul class="hero__list">
+							<li class="hero__item">Бесплатный выезд и диагностика</li>
+							<li class="hero__item">Возможен срочный ремонт</li>
+							<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
+							<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
+						</ul>
+						<button class="btn-reset hero__btn">Оставить заявку</button>
+					</div>
 					<div class="hero__wrapper-img">
-						<NuxtImg src="/img/hero-circle.png" class="hero__img" alt="hero" />
-						<NuxtImg
-							src="/img/hero-home.png"
-							class="hero__img-home"
-							alt="hero"
-						/>
+						<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
+						<img src="/img/hero-home.png" class="hero__img-home" alt="hero" />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide v-for="{ title, img } in menuLinks">
-					<h1 class="hero__title">{{ title }} в Москве и МО</h1>
-					<ul class="hero__list">
-						<li class="hero__item">Бесплатный выезд и диагностика</li>
-						<li class="hero__item">Возможен срочный ремонт</li>
-						<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
-						<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
-					</ul>
-					<button class="btn-reset hero__btn">Оставить заявку</button>
+				<SwiperSlide v-for="{ title, img } in menuLinks" class="hero__wrapper">
+					<div class="hero__wrapper-slide">
+						<h1 class="hero__title">{{ title }} в Москве и МО</h1>
+						<ul class="hero__list">
+							<li class="hero__item">Бесплатный выезд и диагностика</li>
+							<li class="hero__item">Возможен срочный ремонт</li>
+							<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
+							<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
+						</ul>
+						<button class="btn-reset hero__btn">Оставить заявку</button>
+					</div>
 					<div class="hero__wrapper-img">
-						<NuxtImg src="/img/hero-circle.png" class="hero__img" alt="hero" />
-						<NuxtImg
-							:src="`/img/${img}.png`"
-							class="hero__img-home"
-							alt="hero"
-						/>
+						<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
+						<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
 					</div>
 				</SwiperSlide>
 			</Swiper>
@@ -75,6 +71,33 @@ const initSwiper = (instance: any) => {
 		position: relative;
 		padding-top: 60px;
 		padding-bottom: 86px;
+
+		@media screen and (width > 960px) {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	&__wrapper-slide {
+		@media screen and (width > 960px) {
+			max-width: 50%;
+			padding-top: 100px;
+			padding-bottom: 86px;
+		}
+
+		@media screen and (width > 1200px) {
+			max-width: 70%;
+		}
+	}
+	&__wrapper {
+		@media screen and (width > 960px) {
+			display: flex;
+			height: 656px;
+		}
+		@media screen and (width > 1200px) {
+			display: flex;
+			height: 547px;
+		}
 	}
 
 	&__btn {
@@ -86,12 +109,28 @@ const initSwiper = (instance: any) => {
 		font-weight: 500;
 		line-height: 140%;
 		color: var(--c-primary);
+
+		@media screen and (width > 960px) {
+			margin-bottom: 0;
+		}
 	}
 
 	&__wrapper-img {
 		position: relative;
 		width: 100%;
+
+		@media screen and (width > 960px) {
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			height: 100%;
+			width: 598px;
+			overflow: visible;
+		}
 	}
+
 	&__title {
 		margin-bottom: 20px;
 		color: var(--c-white);
@@ -153,11 +192,18 @@ const initSwiper = (instance: any) => {
 			width: 75%;
 			height: 75%;
 			object-fit: contain;
+
+			@media screen and (width > 960px) {
+				width: 100%;
+				height: 100%;
+				transform: translate(-50%, -39%);
+			}
 		}
 	}
 }
 
 .wrapper__pagination {
+	z-index: 10;
 	display: flex;
 	justify-content: center;
 	width: 100%;

@@ -13,21 +13,17 @@
 					:class="className"
 					v-for="{ title, img, className } in menuMobileLinks"
 				>
-					<NuxtImg
-						:src="`/svg/${img}.svg`"
-						:alt="title"
-						class="services__img"
-					/>
+					<img :src="`/svg/${img}.svg`" :alt="title" class="services__img" />
 					{{ title }}
 				</li>
 			</ul>
 			<div class="services__wrapper">
-				<NuxtImg
+				<img
 					src="/img/blue-circle.png"
 					class="services__img-bottom"
 					alt="services"
 				/>
-				<NuxtImg
+				<img
 					src="/img/master.png"
 					class="services__img-master"
 					alt="services"
@@ -37,9 +33,7 @@
 	</section>
 </template>
 
-<script lang="ts" setup>
-console.log(menuMobileLinks)
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .services {

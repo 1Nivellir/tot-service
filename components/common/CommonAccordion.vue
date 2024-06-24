@@ -6,7 +6,7 @@
 		>
 			<button class="btn-reset accordion__btn" @click="click(i)">
 				{{ title }}
-				<NuxtImg
+				<img
 					src="/svg/arrow-in-ellipse.svg"
 					class="accordion__icon"
 					:class="{ active: openIndex === i }"
