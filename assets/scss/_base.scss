@@ -29,3 +29,17 @@ body {
 .main {
 	position: relative;
 }
+
+.subtitle {
+	font-size: clamp(26px, 3.5vw, 42px);
+	font-weight: 700;
+	line-height: 110%;
+}
+.fade-enter-active,
+.fade-leave-active {
+	transition: transform 3s;
+}
+.fade-enter,
+.fade-leave-to {
+	transform: translateY(-100px);
+}

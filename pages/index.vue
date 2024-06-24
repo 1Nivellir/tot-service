@@ -3,6 +3,10 @@
 		<ClientOnly>
 			<HomeHero />
 		</ClientOnly>
+		<HomeServices />
+		<HomeAbout />
+		<HomeAdvantages />
+		<HomeQuestions />
 	</div>
 </template>
 
@@ -12,4 +16,4 @@ definePageMeta({
 })
 </script>
 
-<style></style>
+<style lang="scss"></style>
