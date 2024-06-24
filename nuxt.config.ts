@@ -34,6 +34,7 @@ export default defineNuxtConfig({
 			},
 		],
 		'@nuxt/image',
+		'@vueuse/nuxt',
 		[
 			'nuxt-swiper',
 			{
@@ -45,4 +46,11 @@ export default defineNuxtConfig({
 			},
 		],
 	],
+	runtimeConfig: {
+		public: {
+			baseURL:
+				process.env.NUXT_PUBLIC_BASE_URL ||
+				'http://tot-market.ru/rest/3/cke6tpbloq9xcq7i/',
+		},
+	},
 })

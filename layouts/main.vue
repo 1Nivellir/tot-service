@@ -4,9 +4,10 @@
 		<main class="main" id="_main">
 			<slot />
 		</main>
+		<CommonFooter />
 	</div>
 </template>
 
 <script lang="ts" setup></script>
 
-<style></style>
+<style lang="scss"></style>

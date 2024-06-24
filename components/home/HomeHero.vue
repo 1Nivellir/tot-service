@@ -60,6 +60,10 @@ const initSwiper = (instance: any) => {
 		currentSlide.value = swiperInstance.value.activeIndex
 	})
 }
+
+// const response = await useCustomFetch('1/iblock.Element.list.json?IBLOCK_ID=9')
+
+// await console.log(response)
 </script>
 
 <style lang="scss" scoped>
