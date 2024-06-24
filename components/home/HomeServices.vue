@@ -37,7 +37,9 @@
 	</section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+console.log(menuMobileLinks)
+</script>
 
 <style lang="scss" scoped>
 .services {
@@ -67,6 +69,10 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 10px;
+
+		@media screen and (min-width: 480px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	&__img {

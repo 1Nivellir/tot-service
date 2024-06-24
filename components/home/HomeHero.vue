@@ -20,7 +20,7 @@
 						/>
 					</div>
 				</SwiperSlide>
-				<SwiperSlide v-for="{ title, img } in menuMobileLinks">
+				<SwiperSlide v-for="{ title, img } in menuLinks">
 					<h1 class="hero__title">{{ title }} в Москве и МО</h1>
 					<ul class="hero__list">
 						<li class="hero__item">Бесплатный выезд и диагностика</li>
@@ -53,7 +53,8 @@
 <script lang="ts" setup>
 const swiperInstance = ref<any>({})
 const currentSlide = ref(0)
-menuMobileLinks.splice(0, 1)
+const menuLinks = [...menuMobileLinks]
+menuLinks.splice(0, 1)
 const initSwiper = (instance: any) => {
 	swiperInstance.value = instance
 	swiperInstance.value.on('slideChangeTransitionEnd', () => {
@@ -94,9 +95,17 @@ const initSwiper = (instance: any) => {
 	&__title {
 		margin-bottom: 20px;
 		color: var(--c-white);
-		font-size: clamp(32px, 5vw, 54px); // 32px;
+		font-size: 32px; // 32px;
 		font-weight: 700;
 		line-height: 110%;
+
+		@media (width > 480px) {
+			font-size: 46px;
+		}
+
+		@media (width > 640px) {
+			font-size: 54px;
+		}
 	}
 
 	&__list {
@@ -104,15 +113,23 @@ const initSwiper = (instance: any) => {
 		flex-direction: column;
 		gap: 5px;
 		margin-bottom: 30px;
-		color: var(--c-white);
-		font-size: 16px;
-		font-weight: 500;
-		line-height: 140%;
 	}
 
 	&__item {
 		display: flex;
 		align-items: center;
+		color: var(--c-white);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 140%;
+
+		@media screen and (width > 480px) {
+			font-size: 16px;
+		}
+
+		@media screen and (width > 640px) {
+			font-size: 18px;
+		}
 
 		&::before {
 			content: '';

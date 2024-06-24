@@ -2,6 +2,7 @@
 	<header class="header">
 		<div class="container header__container">
 			<CommonLogo />
+			<HeaderText v-if="!$viewport.isLessThan('mobileMedium')" />
 			<div class="header__wrapper-menu" @click="openMenu">
 				<button class="btn-reset header-btn">Меню</button>
 				<div class="header-icon" id="menu-icon" :class="{ open: showMenu }">

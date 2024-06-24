@@ -4,6 +4,7 @@
 			<FooterInfo />
 			<FooterAddress />
 			<FooterContacts />
+			<FooterSocial />
 			<NuxtLink to="/" class="footer__link"
 				>Политика конфиденциальности</NuxtLink
 			>
@@ -26,6 +27,10 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		row-gap: 30px;
+
+		@media screen and (width > 480px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	&__preblock {

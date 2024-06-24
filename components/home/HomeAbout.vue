@@ -106,7 +106,7 @@
 
 	&__subtitle-2 {
 		color: rgb(0, 137, 233);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 700;
 		line-height: 140%;
 		text-align: center;
@@ -176,6 +176,10 @@
 	&__img-bg {
 		transform: translateY(8px);
 		width: 36px;
+
+		@media screen and (width > 480px) {
+			width: 44px;
+		}
 	}
 
 	&__list {
@@ -200,14 +204,14 @@
 
 	&__subtitle {
 		color: var(--c-white);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 700;
 		line-height: 140%;
 	}
 
 	&__subdescr {
 		color: var(--c-white-secondary);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 400;
 		line-height: 140%;
 	}

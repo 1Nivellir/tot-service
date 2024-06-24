@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<ClientOnly>
-			<HomeHero />
-		</ClientOnly>
+		<HomeHero />
 		<HomeServices />
 		<HomeAbout />
 		<HomeAdvantages />

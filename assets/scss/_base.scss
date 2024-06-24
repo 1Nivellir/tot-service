@@ -31,9 +31,17 @@ body {
 }
 
 .subtitle {
-	font-size: clamp(26px, 3.5vw, 42px);
+	font-size: 26px;
 	font-weight: 700;
 	line-height: 110%;
+
+	@media screen and (width > 480px) {
+		font-size: 36px;
+	}
+
+	@media screen and (max-width > 640px) {
+		font-size: 42px;
+	}
 }
 .fade-enter-active,
 .fade-leave-active {
