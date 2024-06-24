@@ -110,6 +110,7 @@
 	&__title {
 		margin-bottom: 20px;
 		color: var(--c-primary);
+		max-width: 90%;
 	}
 
 	&__list {
@@ -121,7 +122,7 @@
 
 	&__subtitle {
 		color: var(--c-primary);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 700;
 		line-height: 140%;
 	}
@@ -136,6 +137,10 @@
 	&__icon {
 		flex-shrink: 0;
 		transform: translateY(8px);
+
+		@media screen and (width > 480px) {
+			width: 44px;
+		}
 	}
 
 	&__item {

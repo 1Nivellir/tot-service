@@ -19,4 +19,11 @@
 
 <script lang="ts" setup></script>
 
-<style></style>
+<style lang="scss" scoped>
+.footer__block {
+	@media screen and (width > 480px) {
+		grid-row: 1 / 2;
+		grid-column: 2 / 3;
+	}
+}
+</style>

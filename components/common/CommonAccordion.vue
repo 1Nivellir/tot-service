@@ -1,37 +1,35 @@
 <template>
-	<div class="container">
-		<ul class="accordion__list">
-			<li
-				class="accordion__item"
-				v-for="({ title, description }, i) in accordion"
+	<ul class="accordion__list">
+		<li
+			class="accordion__item"
+			v-for="({ title, description }, i) in accordion"
+		>
+			<button class="btn-reset accordion__btn" @click="click(i)">
+				{{ title }}
+				<NuxtImg
+					src="/svg/arrow-in-ellipse.svg"
+					class="accordion__icon"
+					:class="{ active: openIndex === i }"
+				/>
+			</button>
+			<transition
+				name="accordion"
+				mode="out-in"
+				@before-enter="beforeEnter"
+				@enter="enter"
+				@leave="leave"
 			>
-				<button class="btn-reset accordion__btn" @click="click(i)">
-					{{ title }}
-					<NuxtImg
-						src="/svg/arrow-in-ellipse.svg"
-						class="accordion__icon"
-						:class="{ active: openIndex === i }"
-					/>
-				</button>
-				<transition
-					name="accordion"
-					mode="out-in"
-					@before-enter="beforeEnter"
-					@enter="enter"
-					@leave="leave"
+				<div
+					class="accordion__wrapper"
+					v-if="i === openIndex && openIndex !== null"
 				>
-					<div
-						class="accordion__wrapper"
-						v-if="i === openIndex && openIndex !== null"
-					>
-						<p class="accordion__descr">
-							{{ description }}
-						</p>
-					</div>
-				</transition>
-			</li>
-		</ul>
-	</div>
+					<p class="accordion__descr">
+						{{ description }}
+					</p>
+				</div>
+			</transition>
+		</li>
+	</ul>
 </template>
 
 <script lang="ts" setup>

@@ -34,7 +34,7 @@ defineProps<{
 	&__title {
 		margin-bottom: 20px;
 		color: var(--c-white);
-		font-size: clamp(32px, 5vw, 54px); // 32px;
+		font-size: 32px;
 		font-weight: 700;
 		line-height: 110%;
 	}
