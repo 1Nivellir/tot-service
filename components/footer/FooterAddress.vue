@@ -13,6 +13,10 @@
 <style scoped lang="scss">
 .footer__address {
 	font-style: normal;
+
+	@media screen and (width > 960px) {
+		grid-column: 2/3;
+	}
 }
 .footer__descr {
 	max-width: 50%;

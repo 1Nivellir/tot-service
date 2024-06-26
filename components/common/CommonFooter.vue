@@ -30,6 +30,11 @@
 
 		@media screen and (width > 480px) {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 38px;
+		}
+
+		@media screen and (width > 960px) {
+			grid-template-columns: repeat(4, 1fr);
 		}
 	}
 
@@ -37,6 +42,10 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
+
+		@media screen and (width > 960px) {
+			grid-column: 2/4;
+		}
 	}
 
 	&__block {

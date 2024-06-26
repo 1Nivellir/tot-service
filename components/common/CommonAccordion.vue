@@ -84,8 +84,12 @@ const leave = (el: any, done: () => void) => {
 		width: 24px;
 		align-self: flex-start;
 		transition: transform 0.3s ease;
-
 		transform: rotate(180deg);
+
+		@media screen and (width > 480px) {
+			width: 32px;
+			height: 32px;
+		}
 
 		&.active {
 			transform: rotate(0);
@@ -98,7 +102,7 @@ const leave = (el: any, done: () => void) => {
 		justify-content: space-between;
 		align-items: center;
 		text-align: left;
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 700;
 		line-height: 140%;
 		color: var(--c-primary);
@@ -108,7 +112,7 @@ const leave = (el: any, done: () => void) => {
 		position: sticky;
 		margin: 0;
 		color: var(--c-primary);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 400;
 		line-height: 140%;
 	}

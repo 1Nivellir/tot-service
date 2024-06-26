@@ -1,6 +1,6 @@
 <template>
 	<section class="services">
-		<div class="container">
+		<div class="container services__container">
 			<h2 class="subtitle services__title">Наши услуги</h2>
 			<p class="services__descr">
 				Наша сервисная компания оказывает услуги по профессиональному ремонту
@@ -41,24 +41,62 @@
 	padding: 60px 0;
 	padding-bottom: 0;
 
+	&__container {
+		position: relative;
+		@media screen and (width > 960px) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(12, auto);
+			align-items: start;
+			column-gap: 20px;
+		}
+		@media screen and (width > 1200px) {
+			grid-template-columns: repeat(6, 1fr);
+		}
+	}
+
 	&__wrapper {
 		position: relative;
 		width: 100%;
+
+		@media screen and (width > 1200px) {
+			position: absolute;
+			bottom: -134px;
+			left: 0;
+			z-index: -1;
+			width: 598px;
+			height: 598px;
+		}
 	}
 	&__title {
+		align-self: start;
+		grid-column: 1/2;
+		grid-row: 1/2;
 		margin-bottom: 20px;
 		color: var(--c-primary);
+
+		@media screen and (width > 1200px) {
+			grid-column: 1/3;
+		}
 	}
 
 	&__descr {
+		grid-column: 1/2;
+		grid-row: 2/3;
 		margin-bottom: 30px;
 		color: var(--c-secondary);
 		font-size: clamp(14px, 3.5vw, 18px);
 		font-weight: 500;
 		line-height: 140%;
+
+		@media screen and (width > 1200px) {
+			grid-column: 3/7;
+			grid-row: 1/2;
+		}
 	}
 
 	&__list {
+		grid-row: 1/11;
 		margin-bottom: 30px;
 		display: grid;
 		grid-template-columns: 1fr;
@@ -66,6 +104,15 @@
 
 		@media screen and (min-width: 480px) {
 			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media screen and (min-width: 640px) {
+			gap: 20px;
+		}
+		@media screen and (min-width: 1200px) {
+			grid-template-columns: repeat(3, 1fr);
+			grid-row: 2/13;
+			grid-column: 3/7;
 		}
 	}
 
@@ -82,6 +129,11 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			width: 70%;
+
+			@media screen and (width > 1200px) {
+				transform: translate(-50%, -65%);
+				width: 53%;
+			}
 		}
 	}
 
@@ -97,10 +149,17 @@
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 140%;
+
+		@media screen and (width > 960px) {
+			height: auto;
+		}
+		@media screen and (width > 1200px) {
+			height: 86px;
+		}
 	}
 }
 .active {
-	background: transparent;
+	background: var(--c-white);
 	border: 1px solid var(--c-bg);
 	color: var(--c-bg);
 }
