@@ -1,6 +1,6 @@
 <template>
 	<section class="advantages">
-		<div class="container">
+		<div class="container advantages__container">
 			<h2 class="advantages__title subtitle">
 				Преимущества универсального подхода
 			</h2>
@@ -78,9 +78,36 @@
 	padding-bottom: 30px;
 	padding-top: 510px;
 
+	@media screen and (width > 960px) {
+		padding-top: 200px;
+	}
+
+	&__container {
+		@media screen and (width > 960px) {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			align-items: start;
+			gap: 30px;
+			grid-template-rows: repeat(2, auto);
+		}
+
+		@media screen and (width > 1200px) {
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(2, auto);
+		}
+	}
+
 	&__wrapper {
 		position: relative;
 		width: 100%;
+
+		@media screen and (width > 960px) {
+			grid-row: 2/3;
+		}
+
+		@media screen and (width > 1200px) {
+			grid-column: 1/4;
+		}
 	}
 
 	&__img-2 {
@@ -96,9 +123,14 @@
 	}
 
 	&__title {
+		align-self: start;
 		margin-bottom: 20px;
 		color: var(--c-primary);
 		max-width: 90%;
+
+		@media screen and (width > 960px) {
+			grid-column: 1/2;
+		}
 	}
 
 	&__list {
@@ -106,6 +138,14 @@
 		flex-direction: column;
 		gap: 30px;
 		margin-bottom: 30px;
+
+		@media screen and (width > 960px) {
+			grid-column: 2/4;
+		}
+
+		@media screen and (width > 1200px) {
+			grid-column: 4/7;
+		}
 	}
 
 	&__subtitle {
@@ -117,7 +157,7 @@
 
 	&__subdescr {
 		color: var(--c-primary);
-		font-size: 14px;
+		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 400;
 		line-height: 140%;
 	}
@@ -128,6 +168,10 @@
 
 		@media screen and (width > 480px) {
 			width: 44px;
+		}
+
+		@media screen and (width > 640px) {
+			width: 60px;
 		}
 	}
 
@@ -140,9 +184,17 @@
 	&__descr {
 		margin-bottom: 30px;
 		color: var(--c-secondary);
-		font-size: 14px;
+		font-size: clamp(14px, 3.5vw, 18px);
 		font-weight: 500;
 		line-height: 140%;
+
+		@media screen and (width > 960px) {
+			grid-column: 2/4;
+		}
+
+		@media screen and (width > 1200px) {
+			grid-column: 2/7;
+		}
 	}
 }
 </style>

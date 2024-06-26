@@ -25,5 +25,10 @@
 		grid-row: 1 / 2;
 		grid-column: 2 / 3;
 	}
+
+	@media screen and (width > 960px) {
+		grid-row: 1 / 2;
+		grid-column: 3 / 4;
+	}
 }
 </style>

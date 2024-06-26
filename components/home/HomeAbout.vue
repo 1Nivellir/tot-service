@@ -1,6 +1,6 @@
 <template>
 	<section class="about">
-		<div class="container">
+		<div class="container about__container">
 			<h2 class="about__title subtitle">Почему мы?</h2>
 			<p class="about__descr">
 				Потому что с нами удобно. Специалистам «TOT-Service» под силу ремонт
@@ -65,17 +65,17 @@
 			</div>
 			<div class="about__block">
 				<div class="about__content-2">
-					<img src="/img/about-bg-1.png" width="128px" />
+					<img src="/img/about-bg-1.png" width="128px" height="128px" />
 					<h3 class="about__subtitle-2">Подключение бытовой техники</h3>
 					<NuxtLink to="/" class="about__link">Смотреть инструкцию</NuxtLink>
 				</div>
 				<div class="about__content-2">
-					<img src="/img/about-bg-2.png" width="128px" />
+					<img src="/img/about-bg-2.png" width="128px" height="128px" />
 					<h3 class="about__subtitle-2">Интернет-магазин запчастей</h3>
 					<NuxtLink to="/" class="about__link">Перейти в магазин</NuxtLink>
 				</div>
 				<div class="about__content-2">
-					<img src="/img/about-bg-3.png" width="128px" />
+					<img src="/img/about-bg-3.png" width="128px" height="128px" />
 					<h3 class="about__subtitle-2">Статьи и рекомендации</h3>
 					<NuxtLink to="/" class="about__link">Читать статьи</NuxtLink>
 				</div>
@@ -93,6 +93,23 @@
 	padding-bottom: 352px;
 	background: var(--c-bg);
 
+	@media screen and (width > 960px) {
+		padding-bottom: 140px;
+	}
+
+	&__container {
+		@media screen and (width > 960px) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			align-items: start;
+			gap: 20px;
+			grid-template-rows: repeat(3, auto);
+		}
+		@media screen and (width > 1200px) {
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(2, auto);
+		}
+	}
 	&__content-2 {
 		display: flex;
 		align-items: center;
@@ -101,6 +118,8 @@
 	}
 
 	&__subtitle-2 {
+		flex-shrink: 0;
+		align-items: flex-start;
 		color: rgb(0, 137, 233);
 		font-size: clamp(14px, 2.5vw, 16px);
 		font-weight: 700;
@@ -134,14 +153,26 @@
 		bottom: 0;
 		transform: translate(-50%, 57%);
 		left: 50%;
-		width: 97%;
+		width: 95%;
 		background: var(--c-white);
 		min-height: 798px;
+
+		@media screen and (width > 960px) {
+			flex-direction: row;
+			max-width: 1160px;
+			align-items: center;
+			justify-content: space-around;
+			min-height: 306px;
+		}
 	}
 
 	&__wrapper {
 		position: relative;
 		width: 100%;
+
+		@media screen and (width > 1200px) {
+			grid-column: 4/7;
+		}
 	}
 	&__img-bottom {
 		width: 100%;
@@ -156,8 +187,15 @@
 	}
 
 	&__title {
+		align-self: start;
+		grid-column: 1/2;
+		grid-row: 1/2;
 		margin-bottom: 20px;
 		color: var(--c-white);
+
+		@media screen and (width > 1200px) {
+			grid-column: 1/3;
+		}
 	}
 
 	&__item {
@@ -182,6 +220,14 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: 30px;
+
+		@media screen and (width > 960px) {
+			grid-row: 1/4;
+		}
+		@media screen and (width > 1200px) {
+			grid-row: 2/4;
+			grid-column: 1/4;
+		}
 	}
 
 	&__content {
@@ -196,6 +242,16 @@
 		font-weight: 500;
 		line-height: 140%;
 		color: var(--c-white-secondary);
+
+		@media screen and (width > 960px) {
+			grid-row: 2/3;
+			grid-column: 1/2;
+		}
+
+		@media screen and (width > 1200px) {
+			grid-row: 1 / 2;
+			grid-column: 3 / 7;
+		}
 	}
 
 	&__subtitle {

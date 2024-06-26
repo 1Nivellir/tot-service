@@ -31,5 +31,13 @@
 	margin: 0;
 	display: flex;
 	gap: 25px;
+
+	@media screen and (width > 960px) {
+		justify-content: flex-end;
+	}
+
+	@media screen and (width > 960px) {
+		justify-content: center;
+	}
 }
 </style>

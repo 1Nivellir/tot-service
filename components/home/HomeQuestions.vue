@@ -17,6 +17,7 @@
 	padding-bottom: 60px;
 
 	&__title {
+		max-width: 40%;
 		margin-bottom: 30px;
 		color: var(--c-primary);
 	}
