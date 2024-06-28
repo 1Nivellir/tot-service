@@ -10,10 +10,10 @@
 			<ul class="services__list">
 				<li
 					class="services__item"
-					:class="className"
-					v-for="{ title, img, className } in menuMobileLinks"
+					v-for="{ title, icon, link } in menuMobileLinks"
 				>
-					<img :src="`/svg/${img}.svg`" :alt="title" class="services__img" />
+					<NuxtLink :to="link" class="services__link" />
+					<CommonIcon :iconName="icon" />
 					{{ title }}
 				</li>
 			</ul>
@@ -131,17 +131,19 @@
 			width: 70%;
 
 			@media screen and (width > 1200px) {
-				transform: translate(-50%, -65%);
+				transform: translate(-50%, -63%);
 				width: 53%;
 			}
 		}
 	}
 
 	&__item {
+		position: relative;
 		height: 68px;
 		padding: 16px;
 		border-radius: 8px;
 		display: flex;
+		border: 1px solid transparent;
 		align-items: center;
 		gap: 15px;
 		background: var(--c-bg);
@@ -149,6 +151,14 @@
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 140%;
+		transition: background 0.3s ease-in-out, color 0.3s ease-in-out,
+			border 0.3s ease-in-out;
+
+		&:hover {
+			background: var(--c-white);
+			border: 1px solid var(--c-bg);
+			color: var(--c-bg);
+		}
 
 		@media screen and (width > 960px) {
 			height: auto;
@@ -157,10 +167,22 @@
 			height: 86px;
 		}
 	}
-}
-.active {
-	background: var(--c-white);
-	border: 1px solid var(--c-bg);
-	color: var(--c-bg);
+
+	&__link {
+		text-decoration: none;
+		color: inherit;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+
+		&:hover + .services__item {
+			background: var(--c-white);
+			border: 1px solid var(--c-bg);
+			color: var(--c-bg);
+		}
+	}
 }
 </style>

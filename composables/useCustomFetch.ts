@@ -8,7 +8,6 @@ export function useCustomFetch<T extends string>(
 	const config = useRuntimeConfig()
 	const defaults: NitroFetchOptions<T> = {
 		baseURL: options.baseURL ? options.baseURL : config.public.baseURL,
-		credentials: 'same-origin',
 		headers: {
 			'Content-type': 'application/json',
 		},

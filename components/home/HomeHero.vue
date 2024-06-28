@@ -47,6 +47,9 @@
 </template>
 
 <script lang="ts" setup>
+const { data, error } = await useServerFetch('iblock/1/element_list')
+
+console.log(data.value)
 const swiperInstance = ref<any>({})
 const currentSlide = ref(0)
 const menuLinks = [...menuMobileLinks]
@@ -57,10 +60,6 @@ const initSwiper = (instance: any) => {
 		currentSlide.value = swiperInstance.value.activeIndex
 	})
 }
-
-// const response = await useCustomFetch('1/iblock.Element.list.json?IBLOCK_ID=9')
-
-// await console.log(response)
 </script>
 
 <style lang="scss" scoped>
