@@ -1,18 +1,25 @@
 import { defu } from 'defu'
-import type { NitroFetchOptions } from 'nitropack'
+import type { UseFetchOptions } from 'nuxt/app'
 
-export function useCustomFetch<T extends string>(
+export function useServerFetch<T>(
 	url: string,
-	options: NitroFetchOptions<T> = {}
+	options: UseFetchOptions<T> = {}
 ) {
 	const config = useRuntimeConfig()
-	const defaults: NitroFetchOptions<T> = {
+
+	const defaults: UseFetchOptions<T> = {
 		baseURL: options.baseURL ? options.baseURL : config.public.baseURL,
-		headers: {
-			'Content-type': 'application/json',
-		},
+		key: url,
+		// mode: 'no-cors',
+		// credentials: 'include',
+
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		onResponse({ request, response, options }) {},
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		onResponseError({ request, response, options }) {},
 	}
+
 	const params = defu(options, defaults)
 
-	return $fetch(url, params)
+	return useFetch(url, params)
 }
