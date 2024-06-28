@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<CommonHero title="Ремонт стиральных машин" img="washing" />
+		<CommonComfort />
 	</div>
 </template>
 

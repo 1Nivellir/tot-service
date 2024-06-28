@@ -2,9 +2,9 @@
 	<div>
 		<HomeHero />
 		<HomeServices />
-		<HomeAbout />
-		<HomeAdvantages />
-		<HomeQuestions />
+		<HomeAboutDef />
+		<HomeAdvantagesDef />
+		<HomeQuestionsDef />
 	</div>
 </template>
 
@@ -12,6 +12,15 @@
 definePageMeta({
 	layout: 'main',
 })
+const HomeAboutDef = defineAsyncComponent(
+	() => import('@/components/home/HomeAbout.vue')
+)
+const HomeAdvantagesDef = defineAsyncComponent(
+	() => import('@/components/home/HomeAdvantages.vue')
+)
+const HomeQuestionsDef = defineAsyncComponent(
+	() => import('@/components/home/HomeQuestions.vue')
+)
 </script>
 
 <style lang="scss"></style>
