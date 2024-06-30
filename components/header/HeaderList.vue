@@ -4,7 +4,7 @@
 			<li class="header__item" v-for="{ title, link } in menuMobileLinks">
 				<NuxtLink
 					class="header__nav-link"
-					:to="link"
+					:to="`/services/${link}`"
 					@click="emit('closeMenu', false)"
 					>{{ title }}</NuxtLink
 				>

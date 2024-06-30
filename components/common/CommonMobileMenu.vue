@@ -26,7 +26,7 @@
 					<div class="menu__burger" v-if="showMenu">
 						<NuxtLink
 							v-for="{ title, link } in menuMobileLinks"
-							:to="link"
+							:to="`/services/${link}`"
 							class="menu__link"
 							@click="emit('closeMenu', false)"
 							>{{ title }}</NuxtLink

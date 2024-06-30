@@ -45,6 +45,25 @@ export default defineNuxtConfig({
 				},
 			},
 		],
+		[
+			'nuxt-mail',
+			{
+				message: {
+					to: 'slavavorobey@vk.com',
+				},
+				smtp: {
+					service: 'mail.ru',
+					host: 'smtp.mail.ru',
+					port: 465,
+					secure: true, // Используйте SSL
+					auth: {
+						user: 'slava.vorobev.1995@mail.ru',
+						pass: 'TSXks1FfhzSzBvkfJFvp',
+					},
+					requireTLS: true, // Укажите, что TLS обязателен
+				},
+			},
+		],
 	],
 	runtimeConfig: {
 		public: {

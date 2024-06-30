@@ -9,9 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-definePageMeta({
-	layout: 'main',
-})
 const HomeAboutDef = defineAsyncComponent(
 	() => import('@/components/home/HomeAbout.vue')
 )

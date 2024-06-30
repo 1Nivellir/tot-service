@@ -47,9 +47,11 @@
 </template>
 
 <script lang="ts" setup>
-// const { data, error } = await useServerFetch('1/iblock&IBLOCK_ID=9')
+const { data, error } = await useCustomFetch(
+	'iblock.Element.get.json?iblockId=9&elementId=1091'
+)
 
-// console.log(data.value)
+console.log(data.value)
 const swiperInstance = ref<any>({})
 const currentSlide = ref(0)
 const menuLinks = [...menuMobileLinks]
