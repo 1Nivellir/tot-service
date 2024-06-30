@@ -12,7 +12,7 @@
 					class="services__item"
 					v-for="{ title, icon, link } in menuMobileLinks"
 				>
-					<NuxtLink :to="link" class="services__link" />
+					<NuxtLink :to="`/services/${link}`" class="services__link" />
 					<CommonIcon :iconName="icon" />
 					{{ title }}
 				</li>

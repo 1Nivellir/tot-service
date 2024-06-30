@@ -1,7 +1,7 @@
 import { defu } from 'defu'
 import type { UseFetchOptions } from 'nuxt/app'
 
-export function useServerFetch<T>(
+export function useCustomFetch<T>(
 	url: string,
 	options: UseFetchOptions<T> = {}
 ) {
