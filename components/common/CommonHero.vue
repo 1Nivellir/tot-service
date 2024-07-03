@@ -16,7 +16,13 @@
 				<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
 			</div>
 			<div class="hero__form-wrapper">
-				<div class="hero__legend">
+				<div class="hero__success" v-if="success">
+					<h2 class="hero__success-title">
+						Ваша заявка принята. Наш специалист свяжется с вами в течение 15
+						минут.
+					</h2>
+				</div>
+				<div class="hero__legend" v-if="!success">
 					<img src="/svg/washing.svg" alt="" class="hero__legend-img" />
 					<div class="hero__form-content">
 						<h2 class="hero__legend-title">Оставьте заявку на ремонт</h2>
@@ -25,15 +31,28 @@
 						>
 					</div>
 				</div>
-				<form class="hero__form">
-					<input type="text" placeholder="Ваше имя" class="hero__input" />
+				<form class="hero__form" @submit.prevent="submit" v-if="!success">
 					<input
 						type="text"
+						placeholder="Ваше имя"
+						name="name"
+						v-model="formValues.name"
+						class="hero__input"
+					/>
+					<input
+						type="text"
+						name="phone"
+						v-model="formValues.phone"
 						placeholder="+7 (999) 999-99-99 *"
 						class="hero__input"
 					/>
 					<label class="hero__label">
-						<input type="checkbox" class="hero__checkbox" />
+						<input
+							type="checkbox"
+							class="hero__checkbox"
+							name="policy"
+							v-model="formValues.policy"
+						/>
 						<span class="hero__policy">
 							Я соглашаюсь с
 							<a href="#" class="hero__link"
@@ -41,7 +60,9 @@
 							></span
 						>
 					</label>
-					<button class="btn-reset hero__btn">Отправить заявку</button>
+					<button class="btn-reset hero__btn" type="submit">
+						Отправить заявку
+					</button>
 				</form>
 			</div>
 		</div>
@@ -49,7 +70,33 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{
+const success = ref(false)
+interface FormValues {
+	name: string
+	phone: string
+	policy: boolean
+}
+const formValues = ref<FormValues>({
+	name: '',
+	phone: '',
+	policy: false,
+})
+
+const mail = useMail()
+const submit = async () => {
+	try {
+		await mail.send({
+			html: `<p>От: ${formValues.value.phone}</p><p>Телефон: ${formValues.value.name}`,
+			from: 'master@tot-service.ru',
+			subject: props.title,
+		})
+		success.value = true
+	} catch (error) {
+		success.value = false
+		throw error
+	}
+}
+const props = defineProps<{
 	title: string
 	img: string
 }>()
@@ -63,6 +110,24 @@ defineProps<{
 
 	@media screen and (width > 960px) {
 		height: 504px;
+	}
+
+	&__success {
+		min-height: 100px;
+		padding: 30px;
+		background: var(--c-white);
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&__success-title {
+		color: var(--c-primary);
+		font-size: 42px;
+		font-weight: 700;
+		line-height: 130%;
 	}
 
 	&__label {
@@ -135,6 +200,7 @@ defineProps<{
 		font-weight: 400;
 		line-height: 140%;
 	}
+
 	&__form-wrapper {
 		z-index: 2;
 		position: absolute;
@@ -190,6 +256,8 @@ defineProps<{
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 140%;
+		outline: none;
+		transition: border 0.3s ease;
 
 		&::placeholder {
 			color: rgba(52, 52, 52, 0.5);
@@ -200,6 +268,7 @@ defineProps<{
 
 		&:focus {
 			outline: none;
+			border: 1px solid rgb(135, 135, 135);
 		}
 	}
 

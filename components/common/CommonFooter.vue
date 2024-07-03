@@ -1,5 +1,6 @@
 <template>
 	<footer class="footer">
+		<FooterForm v-if="isShowForm" />
 		<div class="container footer__container">
 			<FooterInfo />
 			<FooterAddress />
@@ -16,7 +17,20 @@
 	</footer>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const isShowForm = ref(false)
+const route = useRoute()
+watch(
+	() => route.path,
+	(newVal) => {
+		if (newVal === '/') {
+			isShowForm.value = false
+		} else {
+			isShowForm.value = true
+		}
+	}
+)
+</script>
 
 <style lang="scss">
 .footer {
