@@ -5,6 +5,8 @@
 		<CommonSings />
 		<CommonPrice />
 		<CommonAbout />
+		<CommonForm />
+		<CommonBrand />
 		<CommonReviews />
 		<HomeQuestions />
 	</div>

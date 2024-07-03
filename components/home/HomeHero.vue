@@ -1,7 +1,7 @@
 <template>
 	<section class="hero">
 		<div class="container hero__container">
-			<Swiper :slides-per-view="1" @swiper="initSwiper" space-between="30px">
+			<Swiper :slides-per-view="1" @swiper="initSwiper" :space-between="50">
 				<SwiperSlide class="hero__wrapper">
 					<div class="hero__wrapper-slide">
 						<h1 class="hero__title">Ремонт стиральных машин в Москве и МО!</h1>
@@ -48,7 +48,7 @@
 
 <script lang="ts" setup>
 const { data, error } = await useCustomFetch(
-	'iblock.Element.get.json?iblockId=9&elementId=1091'
+	'iblock.Element.get.json?iblockId=9&elementId=1098'
 )
 
 console.log(data.value)
@@ -66,6 +66,7 @@ const initSwiper = (instance: any) => {
 
 <style lang="scss" scoped>
 .hero {
+	overflow: hidden;
 	background: var(--c-bg);
 
 	&__container {
