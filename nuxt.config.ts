@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 			'nuxt-mail',
 			{
 				message: {
-					to: 'master@tot-service.ru',
+					to: process.env.NUXT_EMAIL,
 				},
 				smtp: {
 					service: 'yandex.ru',
@@ -57,9 +57,8 @@ export default defineNuxtConfig({
 					port: 465,
 					secure: true,
 					auth: {
-						user: 'master@tot-service.ru',
+						user: process.env.NUXT_EMAIL,
 						pass: process.env.NUXT_PASSWORD_SMTP,
-
 					},
 					requireTLS: true,
 				},
@@ -69,9 +68,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		private: {},
 		public: {
-			baseURL:
-				process.env.NUXT_PUBLIC_BASE_URL ||
-				'http://tot-market.ru/rest/3/cke6tpbloq9xcq7i/',
+			baseURL: process.env.NUXT_PUBLIC_BASE_URL,
 		},
 	},
 })
