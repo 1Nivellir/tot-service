@@ -49,23 +49,24 @@ export default defineNuxtConfig({
 			'nuxt-mail',
 			{
 				message: {
-					to: 'slavavorobey@vk.com',
+					to: 'master@tot-service.ru',
 				},
 				smtp: {
-					service: 'mail.ru',
-					host: 'smtp.mail.ru',
+					service: 'yandex.ru',
+					host: 'smtp.yandex.ru',
 					port: 465,
-					secure: true, // Используйте SSL
+					secure: true,
 					auth: {
-						user: 'slava.vorobev.1995@mail.ru',
-						pass: 'TSXks1FfhzSzBvkfJFvp',
+						user: 'master@tot-service.ru',
+						pass: 'lF1v#ZQn',
 					},
-					requireTLS: true, // Укажите, что TLS обязателен
+					requireTLS: true,
 				},
 			},
 		],
 	],
 	runtimeConfig: {
+		private: {},
 		public: {
 			baseURL:
 				process.env.NUXT_PUBLIC_BASE_URL ||
