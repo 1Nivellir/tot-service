@@ -27,7 +27,7 @@ const emit = defineEmits(['closeMenu'])
 		bottom: 0;
 		transform: translateY(100%);
 		left: 0;
-		z-index: 20;
+		z-index: 100;
 		width: max-content;
 	}
 

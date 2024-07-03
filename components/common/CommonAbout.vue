@@ -35,11 +35,12 @@
 
 <style lang="scss" scoped>
 .about {
+	overflow: hidden;
 	padding-top: 30px;
 	padding-bottom: 60px;
 
 	@media screen and (width > 960px) {
-		min-height: 632px;
+		min-height: 694px;
 	}
 
 	&__container {
@@ -65,8 +66,15 @@
 
 		@media screen and (width > 960px) {
 			position: absolute;
-			top: 0;
+			z-index: -1;
 			right: -20%;
+			height: 100%;
+			max-width: 572px;
+			top: 66px;
+		}
+		@media screen and (width > 1200px) {
+			right: 0;
+			top: 0;
 		}
 	}
 
@@ -77,6 +85,7 @@
 	}
 	&__img {
 		width: 100%;
+		object-fit: contain;
 
 		&-home {
 			position: absolute;
@@ -89,8 +98,13 @@
 
 			@media screen and (width > 960px) {
 				width: 100%;
-				height: 85%;
-				transform: translate(-58%, -50%);
+				height: 100%;
+				transform: translate(-63%, -35%);
+			}
+			@media screen and (width > 1200px) {
+				width: 100%;
+				height: 100%;
+				transform: translate(-50%, -35%);
 			}
 		}
 	}

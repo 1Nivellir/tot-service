@@ -42,8 +42,19 @@ const items = [
 
 <style scoped lang="scss">
 .comfort {
+	overflow: visible;
 	padding-top: 403px;
 	padding-bottom: 30px;
+
+	@media screen and (width > 480px) {
+		padding-top: 384px;
+	}
+	@media screen and (width > 640px) {
+		padding-top: 329px;
+	}
+	@media screen and (width > 960px) {
+		padding-top: 200px;
+	}
 
 	&__title {
 		margin-bottom: 30px;

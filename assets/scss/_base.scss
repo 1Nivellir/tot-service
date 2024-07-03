@@ -18,6 +18,8 @@ body {
 	@media screen and (max-width: 975px) {
 		padding: 0 10px;
 	}
+	@media screen and (width < 480px) {
+	}
 }
 
 .btn-reset {
