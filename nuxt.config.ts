@@ -59,6 +59,7 @@ export default defineNuxtConfig({
 					auth: {
 						user: 'master@tot-service.ru',
 						pass: process.env.NUXT_PASSWORD_SMTP,
+
 					},
 					requireTLS: true,
 				},
