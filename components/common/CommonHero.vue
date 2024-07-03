@@ -15,6 +15,35 @@
 				<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
 				<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
 			</div>
+			<div class="hero__form-wrapper">
+				<div class="hero__legend">
+					<img src="/svg/washing.svg" alt="" class="hero__legend-img" />
+					<div class="hero__form-content">
+						<h2 class="hero__legend-title">Оставьте заявку на ремонт</h2>
+						<span class="hero__legend-descr">
+							И наш специалист свяжется с вами в течение 15 минут</span
+						>
+					</div>
+				</div>
+				<form class="hero__form">
+					<input type="text" placeholder="Ваше имя" class="hero__input" />
+					<input
+						type="text"
+						placeholder="+7 (999) 999-99-99 *"
+						class="hero__input"
+					/>
+					<label class="hero__label">
+						<input type="checkbox" class="hero__checkbox" />
+						<span class="hero__policy">
+							Я соглашаюсь с
+							<a href="#" class="hero__link"
+								>политикой конфиденциальности</a
+							></span
+						>
+					</label>
+					<button class="btn-reset hero__btn">Отправить заявку</button>
+				</form>
+			</div>
 		</div>
 	</section>
 </template>
@@ -28,12 +57,171 @@ defineProps<{
 
 <style lang="scss" scoped>
 .hero {
+	overflow: visible;
 	position: relative;
 	background: var(--c-bg);
 
 	@media screen and (width > 960px) {
 		height: 504px;
 	}
+
+	&__label {
+		display: flex;
+		align-items: flex-start;
+		gap: 6px;
+		position: relative;
+
+		@media screen and (width > 640px) {
+			grid-row: 2/3;
+			grid-column: 2/3;
+		}
+		@media screen and (width > 1200px) {
+			grid-column: 1/2;
+			grid-row: 2/3;
+		}
+	}
+
+	&__policy {
+		display: inline-block;
+		color: rgba(52, 52, 52, 0.5);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 140%;
+
+		&::before {
+			content: '';
+			position: absolute;
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			top: 2px;
+			left: 0;
+			border-radius: 50%;
+			border: 1px solid rgb(255, 217, 10);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			top: 6px;
+			left: 4px;
+			opacity: 0;
+			border-radius: 50%;
+			transition: opacity 0.3s ease;
+			background-color: rgb(255, 217, 10);
+		}
+	}
+
+	&__legend-img {
+		display: none;
+
+		@media screen and (width > 480px) {
+			display: block;
+			width: 103px;
+			height: 120px;
+		}
+	}
+
+	&__checkbox:checked + &__policy::after {
+		opacity: 1;
+	}
+
+	&__link {
+		color: rgba(52, 52, 52, 0.5);
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 140%;
+	}
+	&__form-wrapper {
+		z-index: 2;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 95%;
+		transform: translate(-50%, 90%);
+		border-radius: 10px;
+		box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.14);
+
+		@media screen and (width > 960px) {
+			display: flex;
+			background-color: var(--c-white);
+		}
+
+		@media screen and (width > 480px) {
+			transform: translate(-50%, 81%);
+		}
+		@media screen and (width > 960px) {
+			transform: translate(-50%, 60%);
+		}
+	}
+
+	&__checkbox {
+		opacity: 0;
+	}
+
+	&__form {
+		background-color: var(--c-white);
+		padding: 30px 20px;
+		display: grid;
+		row-gap: 10px;
+		border-radius: 0px 0px 10px 10px;
+
+		@media screen and (width > 640px) {
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+		}
+		@media screen and (width > 960px) {
+			border-radius: 0px 10px 10px 0;
+		}
+		@media screen and (width > 1200px) {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+		}
+	}
+
+	&__input {
+		border: 1px solid rgb(255, 217, 10);
+		border-radius: 5px;
+		padding: 8px 14px;
+		color: var(--c-primary);
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 140%;
+
+		&::placeholder {
+			color: rgba(52, 52, 52, 0.5);
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 140%;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__btn {
+		color: var(--c-primary);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 140%;
+		border-radius: 5px;
+		padding: 9px 0;
+		background: rgb(255, 217, 10);
+
+		@media screen and (width > 640px) {
+			grid-column: 1/2;
+			grid-row: 2/3;
+		}
+		@media screen and (width > 1200px) {
+			grid-column: 3/4;
+			grid-row: 1/2;
+		}
+	}
+
 	&__wrapper-img {
 		position: relative;
 		width: 100%;
@@ -47,6 +235,51 @@ defineProps<{
 			width: 598px;
 			height: 598px;
 		}
+	}
+
+	&__legend {
+		display: flex;
+		align-items: center;
+		gap: 26px;
+		padding: 30px 20px;
+		background-image: url('/img/form-bg.png');
+		background-repeat: no-repeat;
+		background-size: 200%;
+		background-position: center;
+		border-radius: 10px 10px 0px 0px;
+
+		@media screen and (width > 480px) {
+			padding: 30px 42px;
+		}
+
+		@media screen and (width > 960px) {
+			border-radius: 10px 0 0 10px;
+			background-size: 100% 100%;
+			background-color: var(--c-white);
+			padding: 30px 36px;
+		}
+		@media screen and (width > 1200px) {
+			max-width: 481px;
+		}
+	}
+
+	&__legend-title {
+		border-bottom: 1px solid rgba(52, 52, 52, 0.2);
+		padding-bottom: 4px;
+		color: var(--c-primary);
+		font-size: clamp(14px, 2.5vw, 16px);
+		font-weight: 700;
+		line-height: 140%;
+		text-transform: uppercase;
+		margin-bottom: 4px;
+	}
+
+	&__legend-descr {
+		display: block;
+		color: var(--c-primary);
+		font-size: clamp(14px, 2.5vw, 16px);
+		font-weight: 400;
+		line-height: 140%;
 	}
 
 	&__wrapper {
@@ -63,6 +296,7 @@ defineProps<{
 	}
 
 	&__container {
+		overflow: visible;
 		position: relative;
 		padding-top: 60px;
 		padding-bottom: 86px;

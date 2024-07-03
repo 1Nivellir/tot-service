@@ -5,6 +5,8 @@
 		<CommonSings />
 		<CommonPrice />
 		<CommonAbout />
+		<CommonReviews />
+		<HomeQuestions />
 	</div>
 </template>
 
