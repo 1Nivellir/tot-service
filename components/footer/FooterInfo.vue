@@ -3,10 +3,12 @@
 		<h2 class="footer__title">Информация</h2>
 		<ul class="footer__list">
 			<li class="footer__item">
-				<NuxtLink class="footer__link">Цены</NuxtLink>
+				<NuxtLink class="footer__link" to="/price">Цены</NuxtLink>
 			</li>
 			<li class="footer__item">
-				<NuxtLink class="footer__link">Услуги по ремонту</NuxtLink>
+				<NuxtLink class="footer__link" to="/services"
+					>Услуги по ремонту</NuxtLink
+				>
 			</li>
 			<li class="footer__item">
 				<NuxtLink class="footer__link" to="/articles"
@@ -14,7 +16,9 @@
 				>
 			</li>
 			<li class="footer__item">
-				<NuxtLink class="footer__link">Подключение бытовой техники</NuxtLink>
+				<NuxtLink class="footer__link" to="/"
+					>Подключение бытовой техники</NuxtLink
+				>
 			</li>
 		</ul>
 	</div>
