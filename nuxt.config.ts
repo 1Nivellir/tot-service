@@ -36,6 +36,23 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@vueuse/nuxt',
 		[
+			'nuxt-primevue',
+			{
+				usePrimeVue: true,
+				components: {
+					prefix: 'Prime',
+					include: ['InputMask'],
+				},
+				directives: {
+					prefix: 'Prime',
+					include: ['Tooltip'],
+				},
+				options: {
+					unstyled: true,
+				},
+			},
+		],
+		[
 			'nuxt-swiper',
 			{
 				swiper: {
@@ -58,7 +75,7 @@ export default defineNuxtConfig({
 					secure: true,
 					auth: {
 						user: 'master@tot-service.ru',
-						pass: 'password',
+						pass: 'lF1v#ZQn',
 					},
 					requireTLS: true,
 				},

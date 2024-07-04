@@ -17,7 +17,7 @@
 			</div>
 			<div class="hero__form-wrapper">
 				<div class="hero__success" v-if="success">
-					<h2 class="hero__success-title">
+					<h2 class="hero__success-title subtitle">
 						Ваша заявка принята. Наш специалист свяжется с вами в течение 15
 						минут.
 					</h2>
@@ -39,12 +39,12 @@
 						v-model="formValues.name"
 						class="hero__input"
 					/>
-					<input
-						type="text"
-						name="phone"
-						v-model="formValues.phone"
-						placeholder="+7 (999) 999-99-99 *"
+					<PrimeInputMask
+						id="basic"
 						class="hero__input"
+						v-model="formValues.phone"
+						mask="+7 (999) 999-99-99"
+						placeholder="+7 (999) 999-99-99"
 					/>
 					<label class="hero__label">
 						<input
@@ -62,6 +62,7 @@
 					</label>
 					<button class="btn-reset hero__btn" type="submit">
 						Отправить заявку
+						<span></span>
 					</button>
 				</form>
 			</div>
@@ -71,6 +72,7 @@
 
 <script lang="ts" setup>
 const success = ref(false)
+const loading = ref('none')
 interface FormValues {
 	name: string
 	phone: string
@@ -84,16 +86,22 @@ const formValues = ref<FormValues>({
 
 const mail = useMail()
 const submit = async () => {
-	try {
-		await mail.send({
-			html: `<p>От: ${formValues.value.phone}</p><p>Телефон: ${formValues.value.name}`,
-			from: 'master@tot-service.ru',
-			subject: props.title,
-		})
-		success.value = true
-	} catch (error) {
-		success.value = false
-		throw error
+	if (!formValues.value.policy) {
+		alert('Вы не согласились с политикой конфиденциальности')
+		return
+	} else {
+		try {
+			loading.value = 'block'
+			await mail.send({
+				html: `<p>Вопрос по: ${props.title}</p><p>От: ${formValues.value.name}</p><p>Телефон: ${formValues.value.phone}`,
+				from: 'master@tot-service.ru',
+				subject: props.title,
+			})
+			success.value = true
+		} catch (error) {
+			success.value = false
+			throw error
+		}
 	}
 }
 const props = defineProps<{
@@ -113,7 +121,7 @@ const props = defineProps<{
 	}
 
 	&__success {
-		min-height: 100px;
+		min-height: 150px;
 		padding: 30px;
 		background: var(--c-white);
 		border-radius: 10px;
@@ -125,9 +133,7 @@ const props = defineProps<{
 
 	&__success-title {
 		color: var(--c-primary);
-		font-size: 42px;
-		font-weight: 700;
-		line-height: 130%;
+		text-align: center;
 	}
 
 	&__label {
@@ -259,6 +265,10 @@ const props = defineProps<{
 		outline: none;
 		transition: border 0.3s ease;
 
+		&:hover:not(:focus) {
+			border-color: rgb(255, 217, 10) !important;
+		}
+
 		&::placeholder {
 			color: rgba(52, 52, 52, 0.5);
 			font-size: 16px;
@@ -273,6 +283,7 @@ const props = defineProps<{
 	}
 
 	&__btn {
+		position: relative;
 		color: var(--c-primary);
 		font-size: 16px;
 		font-weight: 500;
@@ -288,6 +299,28 @@ const props = defineProps<{
 		@media screen and (width > 1200px) {
 			grid-column: 3/4;
 			grid-row: 1/2;
+		}
+
+		& span {
+			display: v-bind(loading);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-radius: 10px;
+			width: 100%;
+			height: 2px;
+			z-index: 1;
+			background: #fc0000;
+			animation: load 2s infinite;
+		}
+
+		@keyframes load {
+			0% {
+				width: 0%;
+			}
+			100% {
+				width: 100%;
+			}
 		}
 	}
 

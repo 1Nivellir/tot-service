@@ -20,6 +20,13 @@
 <script lang="ts" setup>
 const isShowForm = ref(false)
 const route = useRoute()
+onMounted(() => {
+	if (route.path === '/') {
+		isShowForm.value = false
+	} else {
+		isShowForm.value = true
+	}
+})
 watch(
 	() => route.path,
 	(newVal) => {

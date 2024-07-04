@@ -1,23 +1,40 @@
 <template>
-	<div class="container footer-form">
+	<div class="container footer-form" v-if="success">
+		<h2 class="footer-form__success subtitle">
+			Ваша заявка принята. Наш специалист свяжется с вами в течение часа.
+		</h2>
+	</div>
+	<div class="container footer-form" v-else>
 		<h2 class="footer-form__title subtitle">Есть вопрос?</h2>
 		<p class="footer-form__descr">
 			Опишите Ваш вопрос, мы свяжемся с вами и ответим на него!
 		</p>
-		<form class="footer-form__form">
-			<input type="text" class="footer-form__input" placeholder="Ваше имя" />
+		<form class="footer-form__form" @submit.prevent="submitForm">
 			<input
 				type="text"
 				class="footer-form__input"
-				placeholder="Номер телефона"
+				v-model="userName"
+				placeholder="Ваше имя"
+			/>
+			<PrimeInputMask
+				id="basic"
+				v-model="userPhone"
+				class="footer-form__input"
+				mask="+7 (999) 999-99-99"
+				placeholder="+7 (999) 999-99-99"
 			/>
 			<textarea
 				type="text"
 				class="footer-form__input footer-form__textarea"
 				placeholder="Опишите подробно ваш вопрос"
+				v-model="userQuestion"
 			/>
 			<label class="footer-form__label">
-				<input type="checkbox" class="footer-form__checkbox" />
+				<input
+					type="checkbox"
+					class="footer-form__checkbox"
+					v-model="userPolicy"
+				/>
 				<span class="footer-form__policy">
 					Я соглашаюсь с
 					<a href="#" class="footer-form__link"
@@ -26,12 +43,42 @@
 				>
 			</label>
 
-			<button class="btn-reset footer-form__btn">Отправить заявку</button>
+			<button class="btn-reset footer-form__btn" type="submit">
+				Отправить заявку
+				<span></span>
+			</button>
 		</form>
 	</div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const loading = ref('none')
+const success = ref(false)
+const userPolicy = ref(false)
+const userName = ref('')
+const userPhone = ref('')
+const userQuestion = ref('')
+const mail = useMail()
+const submitForm = async () => {
+	if (!userPolicy.value) {
+		alert('Вы не согласились с политикой конфиденциальности')
+		return
+	} else {
+		try {
+			loading.value = 'block'
+			await mail.send({
+				html: `<p>Есть вопрос по: Ремонт стиральных машин</p><p>От: ${userName.value}</p><p>Телефон: ${userPhone.value}`,
+				from: 'master@tot-service.ru',
+				subject: 'Ремонт стиральных машин',
+			})
+			success.value = true
+		} catch (error) {
+			success.value = false
+			throw error
+		}
+	}
+}
+</script>
 
 <style scoped lang="scss">
 .footer-form {
@@ -80,6 +127,10 @@
 			line-height: 140%;
 		}
 
+		&:hover:not(:focus) {
+			border-color: rgba(255, 255, 255, 0.6) !important;
+		}
+
 		&:focus {
 			border: 1px solid rgb(255, 255, 255);
 			outline: none;
@@ -89,6 +140,11 @@
 	&__title {
 		margin-bottom: 6px;
 		color: var(--c-white);
+	}
+
+	&__success {
+		color: var(--c-white);
+		text-align: center;
 	}
 
 	&__descr {
@@ -112,6 +168,7 @@
 	}
 
 	&__btn {
+		position: relative;
 		color: var(--c-primary);
 		font-size: 16px;
 		font-weight: 500;
@@ -125,6 +182,28 @@
 		}
 		@media screen and (width > 960px) {
 			max-width: 430px;
+		}
+
+		& span {
+			display: v-bind(loading);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-radius: 10px;
+			width: 100%;
+			height: 2px;
+			z-index: 1;
+			background: #fc0000;
+			animation: load 2s infinite;
+		}
+
+		@keyframes load {
+			0% {
+				width: 0%;
+			}
+			100% {
+				width: 100%;
+			}
 		}
 	}
 
