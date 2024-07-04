@@ -10,6 +10,7 @@
 					src="/svg/arrow-in-ellipse.svg"
 					class="accordion__icon"
 					:class="{ active: openIndex === i }"
+					alt="Стрелка"
 				/>
 			</button>
 			<transition

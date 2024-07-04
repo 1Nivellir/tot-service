@@ -2,17 +2,17 @@
 	<ul class="footer__social">
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<img class="footer__icon" src="/svg/insta.svg"></img>
+				<img class="footer__icon" src="/svg/insta.svg" alt='Мы в инстаграм'></img>
 			</a>
 		</li>
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<img class="footer__icon" src="/svg/facebook.svg"></img>
+				<img class="footer__icon" src="/svg/facebook.svg" alt='Мы в фейсбук'></img>
 			</a>
 		</li>
 		<li class="footer__item-social">
 			<a href="/" class="footer__link-social">
-				<img class="footer__icon" src="/svg/vk.svg"></img>
+				<img class="footer__icon" src="/svg/vk.svg" alt='Мы вконтакте'></img>
 			</a>
 		</li>
 	</ul>

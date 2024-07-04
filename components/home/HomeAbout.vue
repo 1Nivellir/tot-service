@@ -11,7 +11,11 @@
 			<ul class="about__list">
 				<li class="about__item">
 					<div class="about__img-wrapper">
-						<img src="/svg/bg-auto.svg" class="about__img-bg" />
+						<img
+							src="/svg/bg-auto.svg"
+							class="about__img-bg"
+							alt="Автомобиль"
+						/>
 					</div>
 
 					<div class="about__content">
@@ -28,7 +32,7 @@
 				</li>
 				<li class="about__item">
 					<div class="about__img-wrapper">
-						<img src="/svg/bg-clock.svg" class="about__img-bg" />
+						<img src="/svg/bg-clock.svg" class="about__img-bg" alt="Часы" />
 					</div>
 
 					<div class="about__content">
@@ -43,7 +47,7 @@
 				</li>
 				<li class="about__item">
 					<div class="about__img-wrapper">
-						<img src="/svg/bg-star.svg" class="about__img-bg" />
+						<img src="/svg/bg-star.svg" class="about__img-bg" alt="Звезда" />
 					</div>
 
 					<div class="about__content">
@@ -65,17 +69,32 @@
 			</div>
 			<div class="about__block">
 				<div class="about__content-2">
-					<img src="/img/about-bg-1.png" width="128px" height="128px" />
+					<img
+						src="/img/about-bg-1.png"
+						width="128px"
+						height="128px"
+						alt="Картинка 1"
+					/>
 					<h3 class="about__subtitle-2">Подключение бытовой техники</h3>
 					<NuxtLink to="/" class="about__link">Смотреть инструкцию</NuxtLink>
 				</div>
 				<div class="about__content-2">
-					<img src="/img/about-bg-2.png" width="128px" height="128px" />
+					<img
+						src="/img/about-bg-2.png"
+						width="128px"
+						height="128px"
+						alt="Картинка 2"
+					/>
 					<h3 class="about__subtitle-2">Интернет-магазин запчастей</h3>
 					<NuxtLink to="/" class="about__link">Перейти в магазин</NuxtLink>
 				</div>
 				<div class="about__content-2">
-					<img src="/img/about-bg-3.png" width="128px" height="128px" />
+					<img
+						src="/img/about-bg-3.png"
+						width="128px"
+						height="128px"
+						alt="Картинка 3"
+					/>
 					<h3 class="about__subtitle-2">Статьи и рекомендации</h3>
 					<NuxtLink to="/" class="about__link">Читать статьи</NuxtLink>
 				</div>

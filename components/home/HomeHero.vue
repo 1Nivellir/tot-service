@@ -14,8 +14,12 @@
 						<button class="btn-reset hero__btn">Оставить заявку</button>
 					</div>
 					<div class="hero__wrapper-img">
-						<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
-						<img src="/img/hero-home.png" class="hero__img-home" alt="hero" />
+						<img src="/img/hero-circle.png" class="hero__img" alt="Круг" />
+						<img
+							src="/img/hero-home.png"
+							class="hero__img-home"
+							alt="Картинка"
+						/>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide v-for="{ title, img } in menuLinks" class="hero__wrapper">

@@ -15,7 +15,12 @@
 			</p>
 			<ul class="advantages__list">
 				<li class="advantages__item">
-					<img src="/svg/adva-1.svg" width="36px" class="advantages__icon" />
+					<img
+						src="/svg/adva-1.svg"
+						width="36px"
+						class="advantages__icon"
+						alt="Иконка"
+					/>
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Нашим мастерам не знакомо слово НЕТ
@@ -27,7 +32,12 @@
 					</div>
 				</li>
 				<li class="advantages__item">
-					<img src="/svg/adva-2.svg" width="36px" class="advantages__icon" />
+					<img
+						src="/svg/adva-2.svg"
+						width="36px"
+						class="advantages__icon"
+						alt="Иконка"
+					/>
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Индивидуальный подход к каждому бренду.
@@ -39,7 +49,12 @@
 					</div>
 				</li>
 				<li class="advantages__item">
-					<img src="/svg/adva-3.svg" width="36px" class="advantages__icon" />
+					<img
+						src="/svg/adva-3.svg"
+						width="36px"
+						class="advantages__icon"
+						alt="Иконка"
+					/>
 					<div class="advantages__content">
 						<h2 class="advantages__subtitle">
 							Абсолютно всё — от диагностики до быстрого и качественного ремонта

@@ -7,10 +7,19 @@ export default defineNuxtConfig({
 			id: '_tot-service-root',
 		},
 		head: {
+			htmlAttrs: {
+				lang: 'ru',
+			},
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1',
 			title: 'Tot Service',
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.png' }],
+			meta: [
+				{ name: 'description', content: 'Tot Service' },
+				{ name: 'author', content: 'Tot Service' },
+				{ name: 'robots', content: 'index, follow' },
+				{ name: 'email', content: emailNuxtMailer },
+			],
 		},
 	},
 	css: [
