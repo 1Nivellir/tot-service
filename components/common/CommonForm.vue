@@ -1,36 +1,56 @@
 <template>
 	<section class="form">
 		<div class="container">
-			<form class="form__form">
+			<div class="form__success" v-if="success">
+				<h2 class="form__success-title subtitle">
+					Ваша заявка принята. Наш специалист свяжется с вами в течение часа.
+				</h2>
+			</div>
+			<form class="form__form" @submit.prevent="submitForm" v-else>
 				<h2 class="form__title">У вас сломалась стиральная машина?</h2>
 				<p class="form__descr">
 					Опишите Вашу проблему и отправьте заявку. Мы свяжемся с вами для её
 					решения!
 				</p>
-				<input type="text" placeholder="Ваше имя" class="form__input" />
-				<input type="text" placeholder="Номер телефона*" class="form__input" />
 				<input
 					type="text"
+					placeholder="Ваше имя"
+					v-model="userName"
+					class="form__input"
+				/>
+				<PrimeInputMask
+					id="basic"
+					v-model="userPhone"
+					class="form__input"
+					mask="+7 (999) 999-99-99"
+					placeholder="+7 (999) 999-99-99"
+				/>
+				<input
+					type="text"
+					v-model="userModel"
 					placeholder="Название модели (напр., BOSCH WFF1201/01)*"
 					class="form__input"
 				/>
 				<input
 					type="text"
+					v-model="userSerial"
 					placeholder="Серийный номер (напр., 305521333 06 10)*"
 					class="form__input"
 				/>
 				<textarea
 					type="text"
+					v-model="userProblems"
 					placeholder="Опишите вашу проблему*"
 					class="form__input form__textarea"
 				/>
 				<input
+					v-model="userAddress"
 					placeholder="Ваш точный адрес*"
 					type="text"
 					class="form__input"
 				/>
 				<label class="form__label">
-					<input type="checkbox" class="form__checkbox" />
+					<input type="checkbox" class="form__checkbox" v-model="userPolicy" />
 					<span class="form__policy">
 						Я соглашаюсь с
 						<a href="#" class="form__link"
@@ -39,14 +59,49 @@
 					>
 				</label>
 
-				<button class="btn-reset form__btn">Отправить заявку</button>
+				<button class="btn-reset form__btn" type="submit">
+					Отправить заявку
+					<span></span>
+				</button>
 			</form>
 		</div>
 	</section>
 </template>
 
 <script lang="ts" setup>
-const items = [{}]
+const loading = ref('none')
+const userName = ref('')
+const userPhone = ref('')
+const userAddress = ref('')
+const userProblems = ref('')
+const userModel = ref('')
+const userSerial = ref('')
+const userPolicy = ref(false)
+const success = ref(false)
+const mail = useMail()
+const submitForm = async () => {
+	if (!userPolicy.value) {
+		alert('Вы не согласились с политикой конфиденциальности')
+		return
+	} else {
+		try {
+			loading.value = 'block'
+			await mail.send({
+				html: `<p>Вопрос по: Ремонт стиральных машин</p><p>От: ${userName.value}</p><p>Телефон: ${userPhone.value}<p>Адрес: ${userAddress.value}<p>Модель: ${userModel.value}<p>Серийный номер: ${userSerial.value}<p>Проблема: ${userProblems.value}`,
+				from: 'master@tot-service.ru',
+				subject: 'Ремонт стиральных машин',
+			})
+			success.value = true
+		} catch (error) {
+			success.value = false
+			throw error
+		}
+	}
+}
+// const props = defineProps<{
+// 	title: string
+// 	img: string
+// }>()
 </script>
 
 <style scoped lang="scss">
@@ -67,7 +122,7 @@ const items = [{}]
 
 	&__textarea {
 		resize: none;
-		max-height: 94px;
+		height: 94px;
 
 		@media screen and (width > 640px) {
 			grid-column: 1/3;
@@ -76,6 +131,7 @@ const items = [{}]
 	}
 
 	&__btn {
+		position: relative;
 		color: var(--c-primary);
 		font-size: 16px;
 		font-weight: 500;
@@ -86,6 +142,28 @@ const items = [{}]
 
 		@media screen and (width > 640px) {
 			max-width: 430px;
+		}
+
+		& span {
+			display: v-bind(loading);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			border-radius: 10px;
+			width: 100%;
+			height: 2px;
+			z-index: 1;
+			background: #fc0000;
+			animation: load 2s infinite;
+		}
+
+		@keyframes load {
+			0% {
+				width: 0%;
+			}
+			100% {
+				width: 100%;
+			}
 		}
 	}
 
@@ -99,6 +177,10 @@ const items = [{}]
 		border-radius: 5px;
 		outline: none;
 		transition: border 0.3s ease-in-out;
+
+		&:hover:not(:focus) {
+			border-color: rgba(52, 52, 52, 0.1) !important;
+		}
 
 		@media screen and (width > 640px) {
 			&:nth-of-type(5) {
@@ -118,6 +200,23 @@ const items = [{}]
 			outline: none;
 			border: 1px solid rgba(52, 52, 52, 0.8);
 		}
+	}
+
+	&__success {
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+		min-height: 100px;
+		padding: 30px;
+		background: var(--c-white);
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&__success-title {
+		text-align: center;
+		color: var(--c-primary);
 	}
 
 	&__label {
