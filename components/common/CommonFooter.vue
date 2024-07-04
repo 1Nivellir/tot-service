@@ -85,6 +85,7 @@ watch(
 	}
 
 	&__link {
+		cursor: pointer;
 		color: var(--c-white-secondary);
 		font-size: 14px;
 		font-weight: 400;

@@ -79,7 +79,7 @@ export default defineNuxtConfig({
 		},
 		directives: {
 			prefix: 'prime',
-			include: ['Tooltip'],
+			// include: ['Tooltip'],
 		},
 		options: {
 			unstyled: true,
