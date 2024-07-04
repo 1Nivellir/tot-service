@@ -173,15 +173,23 @@
 		color: inherit;
 		position: absolute;
 		top: 0;
+		border-radius: 8px;
+		outline: none;
 		left: 0;
+		border: 1px solid transparent;
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+		transition: border 0.3s ease-in-out;
 
 		&:hover + .services__item {
 			background: var(--c-white);
 			border: 1px solid var(--c-bg);
 			color: var(--c-bg);
+		}
+
+		&:focus-visible {
+			border: 1px solid var(--c-white);
 		}
 	}
 }

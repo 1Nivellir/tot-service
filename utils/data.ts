@@ -1,1 +1,1 @@
-export const emailNuxtMailer = 'slava.vorobev.1995@mail.ru'
+export const emailNuxtMailer = 'master@tot-service.ru'
