@@ -2,8 +2,7 @@
 	<address class="footer__address footer__block">
 		<h2 class="footer__title">Адрес</h2>
 		<p class="footer__link footer__descr">
-			121170, г. Москва, ул. Поклонная, д. 11, стр. 1, офис 16, метро Парк
-			Победы
+			119620, г.Москва, ул.Волынская д.9, пом.IV, Метро Говорово
 		</p>
 	</address>
 </template>

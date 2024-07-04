@@ -9,8 +9,8 @@
 				<a href="tel:74956693559" class="footer__link">+7 (495) 669-35-59</a>
 			</li>
 			<li class="footer__item">
-				<a href="mailto:example@test.com" class="footer__link"
-					>example@test.com</a
+				<a href="mailto:master@tot-service.ru" class="footer__link"
+					>master@tot-service.ru</a
 				>
 			</li>
 		</ul>

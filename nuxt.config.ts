@@ -67,13 +67,13 @@ export default defineNuxtConfig({
 					to: emailNuxtMailer,
 				},
 				smtp: {
-					service: 'mail.ru',
-					host: 'smtp.mail.ru',
+					service: 'yandex.ru',
+					host: 'smtp.yandex.ru',
 					port: 465,
 					secure: true,
 					auth: {
 						user: emailNuxtMailer,
-						pass: 'H8vCsHyjLNZg3cqaBWgd',
+						pass: 'pmrqieslbxqytbaq',
 					},
 					requireTLS: true,
 				},

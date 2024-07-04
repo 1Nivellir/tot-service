@@ -10,8 +10,8 @@
 				>Политика конфиденциальности</NuxtLink
 			>
 			<div class="footer__preblock">
-				<h2 class="footer__link">ИП ИВАНОВ ИВАН ИВАНОВИЧ</h2>
-				<p class="footer__link">ИНН 123456789012345</p>
+				<h2 class="footer__link">ООО "ТОТ-Сервис"</h2>
+				<p class="footer__link">ИНН 7730668957</p>
 			</div>
 		</div>
 	</footer>
