@@ -88,7 +88,7 @@ const submitForm = async () => {
 			loading.value = 'block'
 			await mail.send({
 				html: `<p>Вопрос по: Ремонт стиральных машин</p><p>От: ${userName.value}</p><p>Телефон: ${userPhone.value}<p>Адрес: ${userAddress.value}<p>Модель: ${userModel.value}<p>Серийный номер: ${userSerial.value}<p>Проблема: ${userProblems.value}`,
-				from: 'master@tot-service.ru',
+				from: emailNuxtMailer,
 				subject: 'Ремонт стиральных машин',
 			})
 			success.value = true
