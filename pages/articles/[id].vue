@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<CommonContacts />
+		<ArticlesPage />
 	</div>
 </template>
 

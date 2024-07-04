@@ -9,7 +9,9 @@
 				<NuxtLink class="footer__link">Услуги по ремонту</NuxtLink>
 			</li>
 			<li class="footer__item">
-				<NuxtLink class="footer__link">Статьи и рекомендации</NuxtLink>
+				<NuxtLink class="footer__link" to="/articles"
+					>Статьи и рекомендации</NuxtLink
+				>
 			</li>
 			<li class="footer__item">
 				<NuxtLink class="footer__link">Подключение бытовой техники</NuxtLink>
