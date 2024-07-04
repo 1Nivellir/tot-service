@@ -1,26 +1,28 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "dependencies": {
-    "@nuxt/image": "^1.7.0",
-    "@vueuse/core": "^10.11.0",
-    "@vueuse/nuxt": "^10.11.0",
-    "nuxt": "^3.12.2",
-    "nuxt-mail": "^5.0.1",
-    "nuxt-primevue": "^3.0.0",
-    "nuxt-swiper": "^1.2.2",
-    "nuxt-viewport": "^2.1.5",
-    "primevue": "^4.0.0",
-    "sass": "^1.77.6",
-    "vue": "^3.4.29",
-    "vue-router": "^4.3.3"
-  }
+	"name": "nuxt-app",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"dependencies": {
+		"@nuxt/image": "^1.7.0",
+		"@vueuse/core": "^10.11.0",
+		"@vueuse/nuxt": "^10.11.0",
+		"nuxt": "^3.12.2",
+		"nuxt-mail": "^5.0.1",
+		"nuxt-swiper": "^1.2.2",
+		"nuxt-viewport": "^2.1.5",
+		"primevue": "^4.0.0",
+		"sass": "^1.77.6",
+		"vue": "^3.4.29",
+		"vue-router": "^4.3.3"
+	},
+	"devDependencies": {
+		"@primevue/nuxt-module": "^4.0.0"
+	}
 }

@@ -94,7 +94,7 @@ const submit = async () => {
 			loading.value = 'block'
 			await mail.send({
 				html: `<p>Вопрос по: ${props.title}</p><p>От: ${formValues.value.name}</p><p>Телефон: ${formValues.value.phone}`,
-				from: 'master@tot-service.ru',
+				from: emailNuxtMailer,
 				subject: props.title,
 			})
 			success.value = true

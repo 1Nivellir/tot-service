@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { emailNuxtMailer } from './utils/data'
 export default defineNuxtConfig({
 	devtools: { enabled: false },
 	app: {
@@ -12,7 +13,11 @@ export default defineNuxtConfig({
 			link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.png' }],
 		},
 	},
-	css: ['~/assets/scss/main.scss'],
+	css: [
+		'~/assets/scss/main.scss',
+		// 'primevue/resources/primevue.min.css',
+		// 'primevue/resources/themes/md-light-indigo/theme.css',
+	],
 	modules: [
 		[
 			'nuxt-viewport',
@@ -33,25 +38,9 @@ export default defineNuxtConfig({
 				},
 			},
 		],
+		'@primevue/nuxt-module',
 		'@nuxt/image',
 		'@vueuse/nuxt',
-		[
-			'nuxt-primevue',
-			{
-				usePrimeVue: true,
-				components: {
-					prefix: 'Prime',
-					include: ['InputMask'],
-				},
-				directives: {
-					prefix: 'Prime',
-					include: ['Tooltip'],
-				},
-				options: {
-					unstyled: true,
-				},
-			},
-		],
 		[
 			'nuxt-swiper',
 			{
@@ -66,22 +55,36 @@ export default defineNuxtConfig({
 			'nuxt-mail',
 			{
 				message: {
-					to: 'master@tot-service.ru',
+					to: emailNuxtMailer,
 				},
 				smtp: {
-					service: 'yandex.ru',
-					host: 'smtp.yandex.ru',
+					service: 'mail.ru',
+					host: 'smtp.mail.ru',
 					port: 465,
 					secure: true,
 					auth: {
-						user: 'master@tot-service.ru',
-						pass: 'lF1v#ZQn',
+						user: emailNuxtMailer,
+						pass: 'H8vCsHyjLNZg3cqaBWgd',
 					},
 					requireTLS: true,
 				},
 			},
 		],
 	],
+	primevue: {
+		usePrimeVue: true,
+		components: {
+			prefix: 'Prime',
+			include: ['InputMask'],
+		},
+		directives: {
+			prefix: 'prime',
+			include: ['Tooltip'],
+		},
+		options: {
+			unstyled: true,
+		},
+	},
 	runtimeConfig: {
 		apiSecret: process.env.NUXT_API_SECRET,
 		public: {
