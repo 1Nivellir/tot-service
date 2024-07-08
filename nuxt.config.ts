@@ -2,6 +2,24 @@
 import { emailNuxtMailer } from './utils/data'
 export default defineNuxtConfig({
 	devtools: { enabled: false },
+	site: {
+		url: 'https://tot-service.ru/',
+	},
+	sitemap: {
+		urls: async (): Promise<any> => {
+			const arr: any = []
+			const urls = await fetch(
+				'https://tot-market.ru/api/service?type=getList&params[pageNum]=1&params[pageSize]=200'
+			)
+			const res: any = await urls.json()
+			res.data.result.forEach((el: any) => {
+				arr.push(`/services/${el.ID}`)
+			})
+
+			return arr
+		},
+		sources: ['https://tot-service.ru/'],
+	},
 	app: {
 		rootAttrs: {
 			id: '_tot-service-root',
@@ -79,6 +97,7 @@ export default defineNuxtConfig({
 				},
 			},
 		],
+		'@nuxtjs/sitemap',
 	],
 	primevue: {
 		usePrimeVue: true,
@@ -95,11 +114,8 @@ export default defineNuxtConfig({
 		},
 	},
 	runtimeConfig: {
-		apiSecret: process.env.NUXT_API_SECRET,
 		public: {
-			baseURL:
-				process.env.NUXT_PUBLIC_BASE_URL ||
-				'https://tot-market.ru/api/services.php',
+			baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'https://tot-market.ru/api/',
 		},
 	},
 })

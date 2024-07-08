@@ -2,15 +2,15 @@
 	<section class="sings">
 		<div class="container">
 			<h2 class="sings__title subtitle">
-				Основные признаки, когда стиральной машине требуется ремонт
+				{{ title }}
 			</h2>
 			<ul class="list-reset sings__list">
-				<li class="sings__item" v-for="(item, index) in items">
+				<li class="sings__item" v-for="{ NAME, PREVIEW_TEXT } in list">
 					<span class="sings__count">
-						{{ getNull(index + 1) }}
+						{{ PREVIEW_TEXT }}
 					</span>
 					<span class="sings__descr">
-						{{ item }}
+						{{ NAME }}
 					</span>
 				</li>
 			</ul>
@@ -19,17 +19,10 @@
 </template>
 
 <script lang="ts" setup>
-const getNull = (num: number) => (num < 10 ? `0${num}` : num)
-const items = [
-	'Не включается',
-	'Отключается при стирке',
-	'Не открывается дверца',
-	'Не набирает воду',
-	'Не греет воду',
-	'Не отжимает',
-	'Не сливает воду',
-	'Протекает',
-]
+defineProps<{
+	list: any
+	title: any
+}>()
 </script>
 
 <style scoped lang="scss">

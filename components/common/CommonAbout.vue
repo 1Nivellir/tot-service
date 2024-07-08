@@ -24,14 +24,22 @@
 				</p>
 				<div class="about__wrapper-img">
 					<img src="/img/hero-circle.png" class="about__img" alt="hero" />
-					<img :src="`/img/washing.png`" class="about__img-home" alt="hero" />
+					<img
+						:src="`https://tot-market.ru/${img}`"
+						class="about__img-home"
+						alt="hero"
+					/>
 				</div>
 			</div>
 		</div>
 	</section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{
+	img: any
+}>()
+</script>
 
 <style lang="scss" scoped>
 .about {

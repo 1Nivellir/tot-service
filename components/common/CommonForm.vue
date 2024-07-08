@@ -7,7 +7,7 @@
 				</h2>
 			</div>
 			<form class="form__form" @submit.prevent="submitForm" v-else>
-				<h2 class="form__title">У вас сломалась стиральная машина?</h2>
+				<h2 class="form__title">{{ title }}</h2>
 				<p class="form__descr">
 					Опишите Вашу проблему и отправьте заявку. Мы свяжемся с вами для её
 					решения!
@@ -69,6 +69,9 @@
 </template>
 
 <script lang="ts" setup>
+const props = defineProps<{
+	title: string
+}>()
 const loading = ref('none')
 const userName = ref('')
 const userPhone = ref('')
@@ -89,7 +92,7 @@ const submitForm = async () => {
 			await mail.send({
 				html: `<p>Вопрос по: Ремонт стиральных машин</p><p>От: ${userName.value}</p><p>Телефон: ${userPhone.value}<p>Адрес: ${userAddress.value}<p>Модель: ${userModel.value}<p>Серийный номер: ${userSerial.value}<p>Проблема: ${userProblems.value}`,
 				from: emailNuxtMailer,
-				subject: 'Ремонт стиральных машин',
+				subject: props.title,
 			})
 			success.value = true
 		} catch (error) {

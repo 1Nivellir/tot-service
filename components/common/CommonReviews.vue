@@ -2,32 +2,34 @@
 	<section class="reviews">
 		<div class="container">
 			<h2 class="reviews__title subtitle">Отзывы наших клиентов</h2>
-			<Swiper
-				navigation
-				:modules="[SwiperNavigation]"
-				:space-between="50"
-				:slides-per-view="$viewport.isLessThan('tabletMedium') ? 1 : 2"
-				ref="swiperRef"
-				class="mySwiper"
-			>
-				<SwiperSlide v-for="{ title, descr } in items">
-					<div class="reviews__wrapper">
-						<h3 class="reviews__subtitle">
-							{{ title }}
-						</h3>
-						<p class="reviews__descr">
-							{{ descr }}
-						</p>
-					</div>
-				</SwiperSlide>
-				<!-- 
+			<ClientOnly>
+				<Swiper
+					navigation
+					:modules="[SwiperNavigation]"
+					:space-between="50"
+					:slides-per-view="$viewport.isLessThan('tabletMedium') ? 1 : 2"
+					ref="swiperRef"
+					class="mySwiper"
+				>
+					<SwiperSlide v-for="{ NAME, PREVIEW_TEXT } in list">
+						<div class="reviews__wrapper">
+							<h3 class="reviews__subtitle">
+								{{ NAME }}
+							</h3>
+							<p class="reviews__descr">
+								{{ PREVIEW_TEXT }}
+							</p>
+						</div>
+					</SwiperSlide>
+					<!-- 
 				<button
 					@click="swiperRef.swiper.slidePrev()"
 					class="swiper-button-prev"
 					ref="prevEl"
 				></button>
 				<button class="swiper-button-next" ref="nextEl"></button> -->
-			</Swiper>
+				</Swiper>
+			</ClientOnly>
 		</div>
 	</section>
 </template>
@@ -35,23 +37,10 @@
 <script lang="ts" setup>
 import 'swiper/css'
 
-const items = [
-	{
-		title: 'Борисов Сергей ',
-		descr:
-			'Сломалась стиральная машинка. Обратился в компанию «TOT-Service», приехали в назначенное время. Отремонтировали всё быстро и качественно, и к тому же дали гарантию на 12 месяцев. Отдельное спасибо менеджеру Татьяне, которая заранее позвонила и предупредила о задержке мастеров. Всем буду рекомендовать этот сервис! Огромное вам спасибо!',
-	},
-	{
-		title: 'Борисов dfcz ',
-		descr:
-			'Сломалась стиральная машинка. Обратился в компанию «TOT-Service», приехали в назначенное время. Отремонтировали всё быстро и качественно, и к тому же дали гарантию на 12 месяцев. Отдельное спасибо менеджеру Татьяне, которая заранее позвонила и предупредила о задержке мастеров. Всем буду рекомендовать этот сервис! Огромное вам спасибо!',
-	},
-	{
-		title: 'Борисов вася ',
-		descr:
-			'Сломалась стиральная машинка. Обратился в компанию «TOT-Service», приехали в назначенное время. Отремонтировали всё быстро и качественно, и к тому же дали гарантию на 12 месяцев. Отдельное спасибо менеджеру Татьяне, которая заранее позвонила и предупредила о задержке мастеров. Всем буду рекомендовать этот сервис! Огромное вам спасибо!',
-	},
-]
+defineProps<{
+	list: any
+}>()
+
 const prevEl = ref<any>(null)
 const nextEl = ref<any>(null)
 // Создаем экземпляр Swiper

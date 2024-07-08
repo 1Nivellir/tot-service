@@ -2,7 +2,7 @@
 	<section class="brand">
 		<div class="container">
 			<h2 class="brand__title subtitle">
-				Ремонтируем варочные панели всех известных брендов
+				{{ title }}
 			</h2>
 			<Swiper
 				v-if="$viewport.isLessThan('tabletMedium')"
@@ -20,16 +20,20 @@
 				>
 					<div class="brand__wrapper">
 						<ul class="brand__list list-reset">
-							<li class="brand__item" v-for="item in chunk">
-								<NuxtLink class="brand__link" to="/">{{ item }}</NuxtLink>
+							<li class="brand__item" v-for="{ NAME_BRANDS, ID } in chunk">
+								<NuxtLink class="brand__link" :to="`/services/${ID}`">{{
+									NAME_BRANDS
+								}}</NuxtLink>
 							</li>
 						</ul>
 					</div>
 				</SwiperSlide>
 			</Swiper>
 			<ul class="brand__list list-reset" v-else>
-				<li class="brand__item" v-for="item in items">
-					<NuxtLink class="brand__link" to="/">{{ item }}</NuxtLink>
+				<li class="brand__item" v-for="{ NAME_BRANDS, ID } in listItems">
+					<NuxtLink class="brand__link" :to="`/services/${ID}`">{{
+						NAME_BRANDS
+					}}</NuxtLink>
 				</li>
 			</ul>
 		</div>
@@ -38,6 +42,11 @@
 
 <script lang="ts" setup>
 import 'swiper/css/pagination'
+
+const props = defineProps<{
+	title: string
+	listItems: any
+}>()
 const initSwiper = (instance: any) => {
 	swiperInstance.value = instance
 	swiperInstance.value.on('slideChangeTransitionEnd', () => {
@@ -55,49 +64,17 @@ const chunkArray = (array: any, chunkSize: any) => {
 		return resultArray
 	}, [])
 }
-const items = [
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-	'BOSCH',
-]
-const chunkedItems = chunkArray(items, 10)
+const chunkedItems = chunkArray(props.listItems, 10)
 
 const swiperInstance = ref<any>({})
 const currentSlide = ref(0)
 </script>
 
 <style lang="scss" scoped>
+.swiper {
+	padding: 0;
+	padding-bottom: 60px;
+}
 .brand {
 	overflow: hidden;
 	padding-top: 40px;

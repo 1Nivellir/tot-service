@@ -1,12 +1,12 @@
 <template>
 	<div class="header__wrapper">
 		<ul class="header__list">
-			<li class="header__item" v-for="{ title, link } in menuMobileLinks">
+			<li class="header__item" v-for="{ NAME, ID } in itemsLinks">
 				<NuxtLink
 					class="header__nav-link"
-					:to="`/services/${link}`"
+					:to="`/services/${ID}`"
 					@click="emit('closeMenu', false)"
-					>{{ title }}</NuxtLink
+					>{{ NAME }}</NuxtLink
 				>
 			</li>
 		</ul>
@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+const itemsLinks = inject('linksItems')
 const emit = defineEmits(['closeMenu'])
 </script>
 
