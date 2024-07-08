@@ -2,18 +2,17 @@
 	<section class="hero">
 		<div class="container hero__container">
 			<div class="hero__wrapper">
-				<h1 class="hero__title">{{ title }} в Москве и МО</h1>
-				<ul class="hero__list">
-					<li class="hero__item">Бесплатный выезд и диагностика</li>
-					<li class="hero__item">Возможен срочный ремонт</li>
-					<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
-					<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
-				</ul>
+				<h1 class="hero__title">{{ title }}</h1>
+				<div class="hero__text" v-html="prevText"></div>
 			</div>
 
 			<div class="hero__wrapper-img">
 				<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
-				<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
+				<img
+					:src="`https://tot-market.ru/${img}`"
+					class="hero__img-home"
+					alt="hero"
+				/>
 			</div>
 			<div class="hero__form-wrapper">
 				<div class="hero__success" v-if="success">
@@ -23,7 +22,11 @@
 					</h2>
 				</div>
 				<div class="hero__legend" v-if="!success">
-					<img src="/svg/washing.svg" alt="" class="hero__legend-img" />
+					<img
+						:src="`https://tot-market.ru/${imgForm}`"
+						alt=""
+						class="hero__legend-img"
+					/>
 					<div class="hero__form-content">
 						<h2 class="hero__legend-title">Оставьте заявку на ремонт</h2>
 						<span class="hero__legend-descr">
@@ -107,6 +110,8 @@ const submit = async () => {
 const props = defineProps<{
 	title: string
 	img: string
+	prevText: any
+	imgForm: string
 }>()
 </script>
 
@@ -228,6 +233,11 @@ const props = defineProps<{
 		@media screen and (width > 960px) {
 			transform: translate(-50%, 60%);
 		}
+	}
+
+	&__text {
+		color: var(--c-white);
+		margin-bottom: 40px;
 	}
 
 	&__checkbox {

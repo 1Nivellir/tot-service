@@ -3,11 +3,11 @@
 		<div class="container">
 			<h2 class="comfort__title subtitle">Нам важен ваш комфорт</h2>
 			<ul class="comfort__list">
-				<li class="comfort__item" v-for="{ title, descr } in items">
+				<li class="comfort__item" v-for="{ NAME, PREVIEW_TEXT } in list">
 					<img src="/svg/adva-1.svg" alt="" class="comfort__icon" />
-					<h3 class="comfort__subtitle">{{ title }}</h3>
+					<h3 class="comfort__subtitle">{{ NAME }}</h3>
 					<p class="comfort__descr">
-						{{ descr }}
+						{{ PREVIEW_TEXT }}
 					</p>
 				</li>
 			</ul>
@@ -16,28 +16,9 @@
 </template>
 
 <script lang="ts" setup>
-const items = [
-	{
-		title: 'Выезд в день обращения',
-		descr:
-			'Мастер выезжает сразу после получения заявки или в удобное для вас время',
-	},
-	{
-		title: 'Ремонт любой сложности',
-		descr:
-			'Каждый наш мастер имеет опыт работы более 3-х лет с бытовой техникой разных производителей',
-	},
-	{
-		title: 'Скидка на ремонт',
-		descr:
-			'Мы предоставляем скидку 20% студентам, пенсионерам, инвалидам и участникам ВОВ',
-	},
-	{
-		title: 'Гарантия 12 месяцев',
-		descr:
-			'Гарантия на все виды работ вне зависимости от сложности и длительности устранения поломки',
-	},
-]
+defineProps<{
+	list: any
+}>()
 </script>
 
 <style scoped lang="scss">

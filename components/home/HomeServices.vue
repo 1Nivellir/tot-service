@@ -8,13 +8,10 @@
 				организациям в Москве и Московской области.
 			</p>
 			<ul class="services__list">
-				<li
-					class="services__item"
-					v-for="{ title, icon, link } in menuMobileLinks"
-				>
-					<NuxtLink :to="`/services/${link}`" class="services__link" />
-					<CommonIcon :iconName="icon" />
-					{{ title }}
+				<li class="services__item" v-for="{ NAME, CODE, ID } in itemsLinks">
+					<NuxtLink :to="`/services/${ID}`" class="services__link" />
+					<CommonIcon :iconName="CODE" />
+					{{ NAME }}
 				</li>
 			</ul>
 			<div class="services__wrapper">
@@ -33,7 +30,9 @@
 	</section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const itemsLinks = inject('linksItems')
+</script>
 
 <style lang="scss" scoped>
 .services {

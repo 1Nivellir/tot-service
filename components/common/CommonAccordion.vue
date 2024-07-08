@@ -2,10 +2,10 @@
 	<ul class="accordion__list">
 		<li
 			class="accordion__item"
-			v-for="({ title, description }, i) in accordion"
+			v-for="({ NAME, PREVIEW_TEXT }, i) in accordion"
 		>
 			<button class="btn-reset accordion__btn" @click="click(i)">
-				{{ title }}
+				{{ NAME }}
 				<img
 					src="/svg/arrow-in-ellipse.svg"
 					class="accordion__icon"
@@ -25,7 +25,7 @@
 					v-if="i === openIndex && openIndex !== null"
 				>
 					<p class="accordion__descr">
-						{{ description }}
+						{{ PREVIEW_TEXT }}
 					</p>
 				</div>
 			</transition>
@@ -35,10 +35,18 @@
 
 <script lang="ts" setup>
 defineProps<{
-	accordion: any
+	accordion: List[]
 }>()
 const openIndex = ref<number | null>(null)
 
+interface List {
+	CODE: string
+	ID: string
+	NAME: string
+	PREVIEW_PICTURE: string
+	PREVIEW_TEXT: string
+	SORT: string
+}
 const click = (index: number) => {
 	if (openIndex.value === index) {
 		openIndex.value = null

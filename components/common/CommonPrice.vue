@@ -1,12 +1,12 @@
 <template>
 	<section class="price">
 		<div class="container price__container">
-			<h2 class="price__title subtitle">Цены на ремонт стиральных машин</h2>
+			<h2 class="price__title subtitle">{{ title }}</h2>
 			<ul class="list-reset price__list">
-				<li class="price__item" v-for="{ title, descr } in items">
-					<h3 class="price__subtitle">{{ title }}</h3>
+				<li class="price__item" v-for="{ NAME, PREVIEW_TEXT } in list">
+					<h3 class="price__subtitle">{{ NAME }}</h3>
 					<span class="price__count">
-						{{ descr }}
+						{{ PREVIEW_TEXT }}
 					</span>
 				</li>
 			</ul>
@@ -16,40 +16,10 @@
 </template>
 
 <script lang="ts" setup>
-const items = [
-	{
-		title: 'Выезд и диагностика стиральной машины за пределами МКАД',
-		descr: '40 руб. за 1 км.',
-	},
-	{
-		title: 'Выезд и диагностика стиральной машины в пределах МКАД',
-		descr: '500 руб.',
-	},
-	{
-		title: 'Демонтаж и монтаж встроенной стиральной машины',
-		descr: '600 руб.',
-	},
-	{
-		title: 'Замена амортизатора в стиральной машине',
-		descr: '950 руб.',
-	},
-	{
-		title: 'Замена бака с барабаном в стиральной машине',
-		descr: '3 000 руб.',
-	},
-	{
-		title: 'Замена барабана в стиральной машине',
-		descr: '3 500 руб.',
-	},
-	{
-		title: 'Замена бункера для порошка в стиральной машине',
-		descr: '1 400 руб.',
-	},
-	{
-		title: 'Замена верхнего противовеса в стиральной машине',
-		descr: '800 руб.',
-	},
-]
+defineProps<{
+	list: any
+	title: string
+}>()
 </script>
 
 <style scoped lang="scss">

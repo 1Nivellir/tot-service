@@ -25,11 +25,11 @@
 				<transition name="burger" mode="out-in">
 					<div class="menu__burger" v-if="showMenu">
 						<NuxtLink
-							v-for="{ title, link } in menuMobileLinks"
-							:to="`/services/${link}`"
+							v-for="{ NAME, ID } in showItem"
+							:to="`/services/${ID}`"
 							class="menu__link"
 							@click="emit('closeMenu', false)"
-							>{{ title }}</NuxtLink
+							>{{ NAME }}</NuxtLink
 						>
 					</div>
 				</transition>
@@ -42,6 +42,7 @@
 const emit = defineEmits(['closeMenu'])
 const showMenu = ref(false)
 
+const showItem = inject('linksItems')
 const openMenu = () => {
 	showMenu.value = !showMenu.value
 }
@@ -58,6 +59,7 @@ const openMenu = () => {
 	background: rgb(0, 137, 233);
 
 	&__wrapper {
+		background: rgb(0, 137, 233);
 		padding: 20px;
 		display: flex;
 		row-gap: 10px;
@@ -88,9 +90,11 @@ const openMenu = () => {
 
 	&__burger {
 		padding: 5px 20px;
+		background: rgb(0, 137, 233);
 	}
 
 	&__link {
+		background: rgb(0, 137, 233);
 		text-decoration: none;
 		display: block;
 		color: var(--c-white);

@@ -4,12 +4,16 @@
 			<h2 class="questions__title subtitle">
 				Ответы на часто задаваемые вопросы
 			</h2>
-			<CommonAccordion :accordion="accordionMenu" />
+			<CommonAccordion :accordion="list" />
 		</div>
 	</section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{
+	list: any
+}>()
+</script>
 
 <style lang="scss" scoped>
 .questions {

@@ -2,46 +2,36 @@
 	<section class="hero">
 		<div class="container hero__container">
 			<Swiper :slides-per-view="1" @swiper="initSwiper" :space-between="50">
-				<SwiperSlide class="hero__wrapper">
+				<SwiperSlide
+					v-for="{
+						NAME,
+						PREVIEW_PICTURE,
+						PREVIEW_TEXT,
+						NAME_BTN,
+						CODE,
+					} in list"
+					class="hero__wrapper"
+				>
 					<div class="hero__wrapper-slide">
-						<h1 class="hero__title">Ремонт стиральных машин в Москве и МО!</h1>
-						<ul class="hero__list">
-							<li class="hero__item">Бесплатный выезд и диагностика</li>
-							<li class="hero__item">Возможен срочный ремонт</li>
-							<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
-							<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
-						</ul>
-						<button class="btn-reset hero__btn">Оставить заявку</button>
-					</div>
-					<div class="hero__wrapper-img">
-						<img src="/img/hero-circle.png" class="hero__img" alt="Круг" />
-						<img
-							src="/img/hero-home.png"
-							class="hero__img-home"
-							alt="Картинка"
-						/>
-					</div>
-				</SwiperSlide>
-				<SwiperSlide v-for="{ title, img } in menuLinks" class="hero__wrapper">
-					<div class="hero__wrapper-slide">
-						<h1 class="hero__title">{{ title }} в Москве и МО</h1>
-						<ul class="hero__list">
-							<li class="hero__item">Бесплатный выезд и диагностика</li>
-							<li class="hero__item">Возможен срочный ремонт</li>
-							<li class="hero__item">Гарантия на ремонт 12 месяцев</li>
-							<li class="hero__item">Скидка 20% студентам и пенсионерам</li>
-						</ul>
-						<button class="btn-reset hero__btn">Оставить заявку</button>
+						<h1 class="hero__title">{{ NAME }}</h1>
+						<div v-html="PREVIEW_TEXT" class="hero__text"></div>
+						<NuxtLink class="btn-reset hero__btn" :to="CODE">{{
+							NAME_BTN
+						}}</NuxtLink>
 					</div>
 					<div class="hero__wrapper-img">
 						<img src="/img/hero-circle.png" class="hero__img" alt="hero" />
-						<img :src="`/img/${img}.png`" class="hero__img-home" alt="hero" />
+						<img
+							:src="`https://tot-market.ru/${PREVIEW_PICTURE}`"
+							class="hero__img-home"
+							alt="hero"
+						/>
 					</div>
 				</SwiperSlide>
 			</Swiper>
 			<div class="wrapper__pagination">
 				<span
-					v-for="(n, i) in menuMobileLinks.length + 1"
+					v-for="(n, i) in list.length"
 					class="swiper__pagination"
 					:class="{ active: currentSlide === i }"
 				></span>
@@ -51,15 +41,20 @@
 </template>
 
 <script lang="ts" setup>
-const { data, error } = await useCustomFetch(
-	'iblock.Element.get.json?iblockId=9&elementId=1098'
+const { data } = await useAsyncData('slider', () =>
+	$fetch<any>(
+		'https://tot-market.ru/api/slider?type=getList&params[pageNum]=1&params[pageSize]=200',
+		{
+			headers: {
+				mode: 'no-cors',
+			},
+		}
+	)
 )
 
-console.log(data.value)
+const list = computed(() => data.value?.data.result)
 const swiperInstance = ref<any>({})
 const currentSlide = ref(0)
-const menuLinks = [...menuMobileLinks]
-menuLinks.splice(0, 1)
 const initSwiper = (instance: any) => {
 	swiperInstance.value = instance
 	swiperInstance.value.on('slideChangeTransitionEnd', () => {
@@ -107,6 +102,8 @@ const initSwiper = (instance: any) => {
 	}
 
 	&__btn {
+		text-decoration: none;
+		display: inline-block;
 		margin-bottom: 30px;
 		border-radius: 5px;
 		background: rgb(255, 217, 10);
@@ -119,6 +116,11 @@ const initSwiper = (instance: any) => {
 		@media screen and (width > 960px) {
 			margin-bottom: 0;
 		}
+	}
+
+	&__text {
+		color: var(--c-white);
+		margin-bottom: 40px;
 	}
 
 	&__wrapper-img {
