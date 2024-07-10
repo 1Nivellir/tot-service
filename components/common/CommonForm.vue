@@ -22,6 +22,7 @@
 					id="basic"
 					v-model="userPhone"
 					class="form__input"
+					inputmode="tel"
 					mask="+7 (999) 999-99-99"
 					placeholder="+7 (999) 999-99-99"
 				/>

@@ -153,10 +153,12 @@ const itemsLinks = inject('linksItems')
 		transition: background 0.3s ease-in-out, color 0.3s ease-in-out,
 			border 0.3s ease-in-out;
 
-		&:hover {
-			background: var(--c-white);
-			border: 1px solid var(--c-bg);
-			color: var(--c-bg);
+		@media (hover: none) and (pointer: coarse) {
+			&:hover {
+				background: var(--c-white);
+				border: 1px solid var(--c-bg);
+				color: var(--c-bg);
+			}
 		}
 
 		@media screen and (width > 960px) {
