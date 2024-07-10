@@ -47,6 +47,7 @@
 						class="hero__input"
 						v-model="formValues.phone"
 						mask="+7 (999) 999-99-99"
+						inputmode="tel"
 						placeholder="+7 (999) 999-99-99"
 					/>
 					<label class="hero__label">
